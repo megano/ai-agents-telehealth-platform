@@ -1,0 +1,188 @@
+{
+  "patients": [
+    {
+      "id": "pat_001",
+      "name": "Amara Johnson",
+      "dob": "1990-03-14",
+      "age": 34,
+      "location": { "city": "Brooklyn", "state": "NY" },
+      "language": "English",
+      "insurance": "Aetna",
+      "product_area": "Fertility & Family Planning",
+      "care_status": "active",
+      "assigned_provider": "prov_001",
+      "chief_complaint": "Exploring IVF options after 18 months of trying to conceive",
+      "visit_history": [
+        { "date": "2026-01-10", "type": "Initial Fertility Consult", "provider": "prov_001", "notes": "Labs ordered. AMH, FSH baseline." },
+        { "date": "2026-02-15", "type": "Lab Review", "provider": "prov_001", "notes": "AMH low-normal. Discussed IUI as first step." }
+      ],
+      "next_appointment": "2026-05-20T10:00:00-05:00",
+      "matching_preferences": {
+        "provider_gender": "female",
+        "language": "English",
+        "modality": "virtual",
+        "continuity": true,
+        "notes": "Prefers female provider; emotionally sensitive topic"
+      },
+      "contact": { "phone": "+13475550192", "email": "amara.j@example.com", "sms_opt_in": true }
+    },
+    {
+      "id": "pat_002",
+      "name": "Sofia Nguyen",
+      "dob": "1994-11-02",
+      "age": 29,
+      "location": { "city": "Austin", "state": "TX" },
+      "language": "English",
+      "insurance": "UnitedHealth",
+      "product_area": "Pregnancy & Prenatal Care",
+      "care_status": "active",
+      "care_stage": "T2",
+      "pregnancy_week": 26,
+      "assigned_provider": "prov_002",
+      "chief_complaint": "Prenatal care, 26 weeks pregnant, first pregnancy",
+      "visit_history": [
+        { "date": "2026-02-01", "type": "OB Intake", "provider": "prov_002", "notes": "EDD Aug 12. NT scan normal. NIPT ordered." },
+        { "date": "2026-03-10", "type": "Prenatal Check-in (14 wk)", "provider": "prov_002", "notes": "BP 118/72. FHR 152. Anatomy scan scheduled at 20 wk." }
+      ],
+      "next_appointment": "2026-05-21T09:00:00-06:00",
+      "matching_preferences": {
+        "provider_gender": "no_preference",
+        "language": "English",
+        "modality": "in-person",
+        "continuity": true,
+        "notes": "Prefers in-person for pregnancy visits; continuity with Dr. Gonzalez important"
+      },
+      "contact": { "phone": "+15125550348", "email": "sofia.n@example.com", "sms_opt_in": true }
+    },
+    {
+      "id": "pat_003",
+      "name": "Denise Park",
+      "dob": "1988-07-19",
+      "age": 37,
+      "location": { "city": "Los Angeles", "state": "CA" },
+      "language": "English",
+      "insurance": "Cigna",
+      "product_area": "Postpartum & Fourth Trimester",
+      "care_status": "active",
+      "care_stage": "postpartum",
+      "postpartum_week": 10,
+      "assigned_provider": "prov_003",
+      "chief_complaint": "Postpartum depression symptoms, 10 weeks postpartum",
+      "visit_history": [
+        { "date": "2026-03-28", "type": "Postpartum Mental Health Intake", "provider": "prov_003", "notes": "Edinburgh score 14. Mild-moderate PPD. Weekly therapy recommended." },
+        { "date": "2026-04-11", "type": "Therapy Session", "provider": "prov_003", "notes": "CBT session. Sleep hygiene, support network mapping." }
+      ],
+      "next_appointment": "2026-05-16T11:00:00-08:00",
+      "matching_preferences": {
+        "provider_gender": "female",
+        "language": "English",
+        "modality": "virtual",
+        "continuity": true,
+        "notes": "Strong preference for female therapist; feels more comfortable discussing birth trauma"
+      },
+      "contact": { "phone": "+13235550671", "email": "denise.p@example.com", "sms_opt_in": true }
+    },
+    {
+      "id": "pat_004",
+      "name": "Rebecca Hill",
+      "dob": "1991-04-30",
+      "age": 33,
+      "location": { "city": "New York", "state": "NY" },
+      "language": "English",
+      "insurance": "Aetna",
+      "product_area": "Postpartum & Fourth Trimester",
+      "care_status": "active",
+      "assigned_provider": "prov_004",
+      "chief_complaint": "Breastfeeding difficulty, low supply, latch issues",
+      "visit_history": [
+        { "date": "2026-04-05", "type": "Lactation Consult", "provider": "prov_004", "notes": "Latch assessment done. Nipple shield trial. Pumping schedule set." }
+      ],
+      "next_appointment": "2026-05-19T14:00:00-05:00",
+      "matching_preferences": {
+        "provider_gender": "no_preference",
+        "language": "English",
+        "modality": "virtual",
+        "continuity": false,
+        "notes": "Open to any lactation specialist; availability is top priority"
+      },
+      "contact": { "phone": "+12125550924", "email": "rebecca.h@example.com", "sms_opt_in": false }
+    },
+    {
+      "id": "pat_005",
+      "name": "Carmen Vidal",
+      "dob": "1975-09-08",
+      "age": 50,
+      "location": { "city": "Austin", "state": "TX" },
+      "language": "Spanish",
+      "insurance": "Humana",
+      "product_area": "Menopause & Midlife",
+      "care_status": "waitlist",
+      "assigned_provider": null,
+      "chief_complaint": "Hot flashes, sleep disruption, mood changes, perimenopause suspected",
+      "visit_history": [],
+      "next_appointment": null,
+      "matching_preferences": {
+        "provider_gender": "female",
+        "language": "Spanish",
+        "modality": "virtual",
+        "continuity": false,
+        "notes": "Requires Spanish-speaking provider; strong preference for female physician for menopause care"
+      },
+      "contact": { "phone": "+15125551102", "email": "carmen.v@example.com", "sms_opt_in": true },
+      "waitlist_note": "prov_005 not accepting new patients. Needs Spanish-speaking menopause specialist."
+    },
+    {
+      "id": "pat_006",
+      "name": "Tia Washington",
+      "dob": "1996-12-22",
+      "age": 27,
+      "location": { "city": "Los Angeles", "state": "CA" },
+      "language": "English",
+      "insurance": "Cigna",
+      "product_area": "Mental & Behavioral Health",
+      "care_status": "active",
+      "assigned_provider": "prov_007",
+      "chief_complaint": "Anxiety and burnout, referred by PCP",
+      "visit_history": [
+        { "date": "2026-03-05", "type": "Intake Session", "provider": "prov_007", "notes": "GAD-7 score 12 (moderate). Weekly sessions started." },
+        { "date": "2026-03-19", "type": "Therapy Session", "provider": "prov_007", "notes": "Boundary setting, work stress triggers." },
+        { "date": "2026-04-02", "type": "Therapy Session", "provider": "prov_007", "notes": "Progress noted. GAD-7 dropped to 8." }
+      ],
+      "next_appointment": "2026-05-21T17:00:00-08:00",
+      "matching_preferences": {
+        "provider_gender": "no_preference",
+        "language": "English",
+        "modality": "virtual",
+        "continuity": true,
+        "cultural_background_preference": "Black or African American",
+        "notes": "Prefers therapist with shared cultural background; continuity with Sofia important"
+      },
+      "contact": { "phone": "+13105550783", "email": "tia.w@example.com", "sms_opt_in": true }
+    },
+    {
+      "id": "pat_007",
+      "name": "Mei Lin Chen",
+      "dob": "1993-06-17",
+      "age": 32,
+      "location": { "city": "New York", "state": "NY" },
+      "language": "Mandarin",
+      "insurance": "Blue Cross Blue Shield",
+      "product_area": "Pediatric Care",
+      "care_status": "active",
+      "assigned_provider": "prov_004",
+      "chief_complaint": "2-month well-baby visit for infant daughter",
+      "visit_history": [
+        { "date": "2026-03-15", "type": "Newborn Visit (2 wk)", "provider": "prov_004", "notes": "Weight gain on track. Feeding Q2h. Jaundice resolved." }
+      ],
+      "next_appointment": "2026-05-15T10:30:00-05:00",
+      "matching_preferences": {
+        "provider_gender": "female",
+        "language": "Mandarin",
+        "modality": "virtual",
+        "continuity": false,
+        "notes": "Strongly prefers Mandarin-speaking provider; husband does not speak English fluently either"
+      },
+      "contact": { "phone": "+16465550312", "email": "mei.chen@example.com", "sms_opt_in": true }
+    }
+  ]
+}

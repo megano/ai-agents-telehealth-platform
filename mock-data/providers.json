@@ -1,0 +1,287 @@
+{
+  "providers": [
+    {
+      "id": "prov_001",
+      "name": "Dr. Priya Sharma",
+      "credentials": "MD, FACOG",
+      "specialty": "Fertility & Reproductive Endocrinology",
+      "product_areas": ["Fertility & Family Planning", "General Women's Wellness"],
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": ["NY", "NJ", "CT", "FL"],
+      "languages": ["English", "Hindi"],
+      "bio": "Board-certified reproductive endocrinologist with 12 years specializing in IUI, IVF, and PCOS management.",
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": ["Mon 9-12", "Tue 9-17", "Thu 9-17", "Fri 9-13"]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 312,
+      "insurance": ["Aetna", "Cigna", "Blue Cross Blue Shield"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_002",
+      "name": "Dr. Maria Gonzalez",
+      "credentials": "MD, MPH",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester"],
+      "hub": "hub_atx",
+      "virtual_available": true,
+      "licensed_states": ["TX", "CO", "FL", "NM"],
+      "languages": ["English", "Spanish"],
+      "bio": "OB-GYN with 9 years focused on high-risk pregnancy, prenatal nutrition, and postpartum mental health integration.",
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": ["Mon 8-16", "Wed 8-16", "Thu 8-16"]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 198,
+      "insurance": ["Aetna", "UnitedHealth", "Humana", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_003",
+      "name": "Dr. Janet Kim",
+      "credentials": "PsyD, PMH-C",
+      "specialty": "Perinatal Mental Health",
+      "product_areas": ["Mental & Behavioral Health", "Postpartum & Fourth Trimester", "Pregnancy & Prenatal Care"],
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": ["CA", "WA", "OR", "NV"],
+      "languages": ["English", "Mandarin"],
+      "bio": "Perinatal mental health certified psychologist specializing in postpartum depression, anxiety, and birth trauma.",
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": ["Tue 10-18", "Wed 10-18", "Fri 10-15"]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 441,
+      "insurance": ["Cigna", "Blue Cross Blue Shield", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_004",
+      "name": "Lauren Chen, IBCLC",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": ["Postpartum & Fourth Trimester", "Pediatric Care"],
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": ["NY", "NJ", "CT", "TX"],
+      "languages": ["English", "Mandarin"],
+      "bio": "International Board Certified Lactation Consultant with 7 years helping new parents navigate breastfeeding challenges.",
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": ["Mon 10-17", "Tue 10-17", "Thu 10-17", "Sat 9-13"]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 276,
+      "insurance": ["Aetna", "Cigna", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_005",
+      "name": "Dr. Alicia Torres",
+      "credentials": "MD, NCMP",
+      "specialty": "Menopause & Midlife Women's Health",
+      "product_areas": ["Menopause & Midlife", "General Women's Wellness"],
+      "hub": "hub_atx",
+      "virtual_available": true,
+      "licensed_states": ["TX", "CO"],
+      "languages": ["English", "Spanish"],
+      "bio": "NAMS Certified Menopause Practitioner focused on HRT, bone health, and sexual wellness for women 40+.",
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": ["Mon 9-15", "Wed 9-15", "Fri 9-13"]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 187,
+      "insurance": ["Blue Cross Blue Shield", "UnitedHealth", "Humana"],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_006",
+      "name": "Dr. Rachel Moore",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": ["Pediatric Care", "Postpartum & Fourth Trimester"],
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": ["CA", "WA", "NV"],
+      "languages": ["English"],
+      "bio": "Board-certified pediatrician focused on newborn development, vaccine schedules, and developmental milestones.",
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": ["Mon 8-16", "Tue 8-16", "Thu 8-16", "Fri 8-12"]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 154,
+      "insurance": ["Aetna", "Cigna", "UnitedHealth", "Humana"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_007",
+      "name": "Sofia Reyes, LCSW",
+      "credentials": "LCSW, PMH-C",
+      "specialty": "Women's Mental Health & Therapy",
+      "product_areas": ["Mental & Behavioral Health", "General Women's Wellness"],
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": ["TX", "CA", "FL", "CO", "NM"],
+      "languages": ["English", "Spanish"],
+      "bio": "Licensed clinical social worker specializing in anxiety, depression, life transitions, and maternal mental health.",
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": ["Mon 12-20", "Wed 12-20", "Thu 12-20", "Sat 10-15"]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 522,
+      "insurance": ["Cigna", "Blue Cross Blue Shield", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_008",
+      "name": "Dr. Nina Okafor",
+      "credentials": "MD, ABPN",
+      "specialty": "Psychiatry",
+      "product_areas": ["Mental & Behavioral Health", "Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester"],
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": ["NY", "NJ", "CT"],
+      "languages": ["English"],
+      "bio": "Board-certified psychiatrist specializing in perinatal mood disorders, medication safety in pregnancy, and postpartum care.",
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": ["Tue 9-15", "Wed 9-15", "Fri 9-13"]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 203,
+      "insurance": ["Aetna", "Cigna", "Blue Cross Blue Shield"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_009",
+      "name": "Angela Torres, LPC",
+      "credentials": "LPC, NCC",
+      "specialty": "Individual & Couples Therapy",
+      "product_areas": ["Mental & Behavioral Health", "Fertility & Family Planning"],
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": ["CO", "TX", "CA", "NM"],
+      "languages": ["English", "Spanish"],
+      "bio": "Licensed professional counselor with expertise in infertility grief, relationship stress, and life transitions.",
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": ["Mon 14-20", "Tue 14-20", "Thu 14-20"]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 189,
+      "insurance": ["Cigna", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_010",
+      "name": "Danielle Brooks, CNM",
+      "credentials": "CNM, MSN",
+      "specialty": "Certified Nurse-Midwife",
+      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "General Women's Wellness"],
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": ["CA", "OR", "WA"],
+      "languages": ["English"],
+      "bio": "Certified nurse-midwife with 10 years supporting physiologic birth, home birth preparation, and postpartum recovery.",
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": ["Mon 9-17", "Wed 9-17", "Fri 9-15"]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 334,
+      "insurance": ["Aetna", "UnitedHealth", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_011",
+      "name": "Keisha Hammond, RD",
+      "credentials": "RD, CLEC",
+      "specialty": "Prenatal & Postpartum Nutrition",
+      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "Fertility & Family Planning"],
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": ["NY", "CA", "TX", "FL"],
+      "languages": ["English"],
+      "bio": "Registered dietitian specializing in prenatal nutrition, gestational diabetes (GD), and fertility-supportive eating patterns.",
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": ["Mon 10-18", "Wed 10-18", "Sat 9-13"]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 142,
+      "insurance": ["Aetna", "Blue Cross Blue Shield", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_012",
+      "name": "Marcus Webb, MS",
+      "credentials": "MS, CHC",
+      "specialty": "Women's Health Coach",
+      "product_areas": ["General Women's Wellness", "Menopause & Midlife", "Mental & Behavioral Health"],
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": "all",
+      "state_license_required": false,
+      "languages": ["English"],
+      "bio": "Certified health coach focused on stress management, habit change, and midlife wellness for women navigating hormonal transitions.",
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": ["Tue 8-18", "Thu 8-18", "Sat 9-14"]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 98,
+      "insurance": ["Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_013",
+      "name": "Dr. Yemi Adeyemi",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "General Women's Wellness"],
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": ["TX", "CA", "CO", "WA"],
+      "state_license_required": true,
+      "languages": ["English"],
+      "bio": "Doctor of Physical Therapy with Women's Clinical Specialist certification. Specializes in prenatal pelvic floor preparation, diastasis recti, and postpartum recovery.",
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": ["Mon 9-17", "Wed 9-17", "Fri 9-15"]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 167,
+      "insurance": ["Aetna", "UnitedHealth", "Cigna", "Self-pay"],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_014",
+      "name": "Jade Morrison, CPC",
+      "credentials": "CPC, CPCC",
+      "specialty": "Maternity Leave & Return-to-Work Coaching",
+      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "General Women's Wellness"],
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": "all",
+      "state_license_required": false,
+      "languages": ["English"],
+      "bio": "Certified professional coach specializing in maternity leave planning, manager conversations, and return-to-work transitions. Helps patients design leave handoffs, negotiate accommodations, and manage re-entry anxiety.",
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": ["Mon 10-18", "Tue 10-18", "Thu 10-18", "Fri 10-15"]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 84,
+      "insurance": ["Self-pay"],
+      "accepting_new_patients": true
+    }
+  ]
+}

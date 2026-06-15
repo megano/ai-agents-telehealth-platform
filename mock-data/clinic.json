@@ -1,0 +1,31 @@
+{
+  "clinic": {
+    "id": "clinic_001",
+    "name": "Astralace Women's Health",
+    "tagline": "Whole-life care for women and families",
+    "founded": 2021,
+    "headquarters": "Austin, TX",
+    "model": "Virtual-first with in-person hubs",
+    "hubs": [
+      { "id": "hub_atx", "city": "Austin", "state": "TX", "address": "512 W 6th St, Suite 400" },
+      { "id": "hub_nyc", "city": "New York", "state": "NY", "address": "240 W 37th St, Floor 8" },
+      { "id": "hub_la",  "city": "Los Angeles", "state": "CA", "address": "8721 Santa Monica Blvd, Suite 200" }
+    ],
+    "product_areas": [
+      "Fertility & Family Planning",
+      "Pregnancy & Prenatal Care",
+      "Postpartum & Fourth Trimester",
+      "Pediatric Care",
+      "Mental & Behavioral Health",
+      "Menopause & Midlife",
+      "General Women's Wellness"
+    ],
+    "insurance_accepted": ["Aetna", "Cigna", "Blue Cross Blue Shield", "UnitedHealth", "Humana", "Self-pay"],
+    "languages_supported": ["English", "Spanish", "Mandarin", "Hindi"],
+    "contact": {
+      "phone": "1-800-555-ASTRA",
+      "email": "care@astralace.example.com",
+      "website": "https://astralace.example.com"
+    }
+  }
+}

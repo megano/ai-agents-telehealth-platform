@@ -1,0 +1,251 @@
+{
+  "_description": "Care pathway templates for Astralace Women's Health. Each pathway defines the proactive provider team and intervention touchpoints across care stages. The agent uses these templates to build per-patient care plans.",
+
+  "pathways": [
+    {
+      "id": "pathway_standard_maternity",
+      "name": "Standard Maternity",
+      "description": "Proactive care pathway for low-risk pregnancy through postpartum return-to-work. Combines evidence-based clinical standards with emerging interventions designed to shift care from reactive to preventive.",
+      "status": "active",
+      "stages": [
+        {
+          "id": "T1",
+          "name": "First Trimester",
+          "weeks": "1-12",
+          "interventions": [
+            {
+              "provider_type": "ob_gyn",
+              "intervention": "prenatal_intake",
+              "description": "Initial prenatal intake, labs, and care plan establishment",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 6
+            },
+            {
+              "provider_type": "registered_dietitian",
+              "intervention": "prenatal_nutrition_intake",
+              "description": "Prenatal nutrition assessment; gestational diabetes (GD) risk screening and prevention plan",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 8
+            },
+            {
+              "provider_type": "therapist",
+              "intervention": "mental_health_screening",
+              "description": "Edinburgh Perinatal Depression Scale screening; establish therapeutic relationship early",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 10
+            },
+            {
+              "provider_type": "career_coach",
+              "intervention": "maternity_leave_planning",
+              "description": "Design maternity leave plan: manager conversation guide, leave timeline, handoff plan",
+              "evidence_level": "emerging",
+              "continuity_required": false,
+              "proactive_trigger_week": 10
+            }
+          ]
+        },
+        {
+          "id": "T2",
+          "name": "Second Trimester",
+          "weeks": "13-27",
+          "interventions": [
+            {
+              "provider_type": "ob_gyn",
+              "intervention": "prenatal_checkups",
+              "description": "Ongoing prenatal monitoring; anatomy scan at 20 weeks; GD screening at 24-28 weeks",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 14
+            },
+            {
+              "provider_type": "registered_dietitian",
+              "intervention": "gd_screening_nutrition_followup",
+              "description": "Follow-up nutrition session timed with GD screening window",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 24
+            },
+            {
+              "provider_type": "pelvic_floor_pt",
+              "intervention": "pelvic_floor_intake",
+              "description": "Prenatal pelvic floor assessment; preparation for labor, reduce incontinence and recovery time",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 20
+            },
+            {
+              "provider_type": "therapist",
+              "intervention": "ongoing_therapy",
+              "description": "Continued mental health support through mid-pregnancy; couples check-in offered",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 16
+            },
+            {
+              "provider_type": "career_coach",
+              "intervention": "leave_handoff_planning",
+              "description": "Finalize leave handoff plan; coverage documentation; set manager expectations",
+              "evidence_level": "emerging",
+              "continuity_required": false,
+              "proactive_trigger_week": 24
+            }
+          ]
+        },
+        {
+          "id": "T3",
+          "name": "Third Trimester",
+          "weeks": "28-40",
+          "description": "TC proactively introduces postpartum care team at week 28, before birth, not after.",
+          "interventions": [
+            {
+              "provider_type": "ob_gyn",
+              "intervention": "third_trimester_monitoring",
+              "description": "Increased visit frequency; Group B strep, fetal positioning, birth prep",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 28
+            },
+            {
+              "provider_type": "pelvic_floor_pt",
+              "intervention": "birth_prep_pelvic_floor",
+              "description": "Perineal massage, pushing techniques, labor positioning",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 32
+            },
+            {
+              "provider_type": "lactation_consultant",
+              "intervention": "prenatal_lc_intro",
+              "description": "Prenatal lactation (LC) consult, meeting LC before birth significantly improves breastfeeding duration",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 34
+            },
+            {
+              "provider_type": "pediatrician",
+              "intervention": "prenatal_pediatrician_intro",
+              "description": "Prenatal pediatrician meet, AAP-recommended; parents establish care relationship before newborn arrives",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 34
+            },
+            {
+              "provider_type": "career_coach",
+              "intervention": "return_to_work_planning",
+              "description": "Design return-to-work plan; accommodation conversations with manager; address re-entry anxiety",
+              "evidence_level": "emerging",
+              "continuity_required": false,
+              "proactive_trigger_week": 30
+            },
+            {
+              "provider_type": "therapist",
+              "intervention": "birth_prep_mental_health",
+              "description": "Birth plan support, birth anxiety, postpartum mood disorder prevention",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 32
+            }
+          ]
+        },
+        {
+          "id": "postpartum",
+          "name": "Postpartum & Fourth Trimester",
+          "weeks": "0-12 postpartum",
+          "interventions": [
+            {
+              "provider_type": "ob_gyn",
+              "intervention": "postpartum_followup",
+              "description": "2-week and 6-week postpartum visits; physical recovery, contraception, PPD screening",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 1
+            },
+            {
+              "provider_type": "lactation_consultant",
+              "intervention": "postpartum_lc_support",
+              "description": "Active breastfeeding support; supply issues, latch, pumping",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 1
+            },
+            {
+              "provider_type": "pelvic_floor_pt",
+              "intervention": "postpartum_pelvic_recovery",
+              "description": "Postpartum pelvic floor rehabilitation; diastasis recti, incontinence, pain",
+              "evidence_level": "established",
+              "continuity_required": false,
+              "proactive_trigger_week": 6
+            },
+            {
+              "provider_type": "therapist",
+              "intervention": "postpartum_mental_health",
+              "description": "Postpartum mental health monitoring; PPD, identity transition, partner relationship",
+              "evidence_level": "established",
+              "continuity_required": true,
+              "proactive_trigger_week": 2
+            },
+            {
+              "provider_type": "career_coach",
+              "intervention": "return_to_work_support",
+              "description": "Return-to-work re-entry support; accommodation follow-through; manage re-entry anxiety",
+              "evidence_level": "emerging",
+              "continuity_required": false,
+              "proactive_trigger_week": 8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "pathway_variants": [
+    {
+      "id": "pathway_gestational_diabetes",
+      "name": "Gestational Diabetes (GD)",
+      "base_pathway": "pathway_standard_maternity",
+      "status": "future_work",
+      "description": "Extends standard pathway with intensified nutrition support and endocrinology consult when GD is diagnosed at 24-28 week screening.",
+      "additional_providers": [
+        {
+          "provider_type": "endocrinologist",
+          "stage": "T2",
+          "who_flagged_need": "clinician_flagged_need",
+          "evidence_level": "established"
+        }
+      ]
+    },
+    {
+      "id": "pathway_mental_health_risk",
+      "name": "Mental Health Risk",
+      "base_pathway": "pathway_standard_maternity",
+      "status": "future_work",
+      "description": "Extends standard pathway with earlier psychiatric involvement when clinician identifies elevated risk factors at intake.",
+      "additional_providers": [
+        {
+          "provider_type": "psychiatrist",
+          "stage": "T1",
+          "who_flagged_need": "clinician_flagged_need",
+          "evidence_level": "emerging"
+        }
+      ]
+    },
+    {
+      "id": "pathway_high_risk_ob",
+      "name": "High-Risk OB",
+      "base_pathway": "pathway_standard_maternity",
+      "status": "future_work",
+      "description": "Extends standard pathway for advanced maternal age (35+), multiples, or pre-existing conditions. Adds maternal-fetal medicine specialist and increases OB-GYN visit frequency.",
+      "additional_providers": [
+        {
+          "provider_type": "maternal_fetal_medicine",
+          "stage": "T1",
+          "who_flagged_need": "clinician_flagged_need",
+          "evidence_level": "established"
+        }
+      ]
+    }
+  ]
+}

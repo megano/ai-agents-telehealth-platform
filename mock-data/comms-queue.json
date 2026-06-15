@@ -1,0 +1,86 @@
+{
+  "sms_queue": [
+    {
+      "id": "sms_001",
+      "patient_id": "pat_001",
+      "appointment_id": "appt_001",
+      "type": "reminder_24h",
+      "status": "delivered",
+      "sent_at": "2026-05-19T10:00:00Z",
+      "message": "Hi Amara! Reminder: you have a virtual appointment with Dr. Priya Sharma tomorrow, May 20 at 10:00 AM ET. Reply CONFIRM to confirm, CANCEL to cancel, or RESCHEDULE to request a new time.",
+      "patient_reply": "CONFIRM",
+      "reply_received_at": "2026-05-19T10:14:22Z"
+    },
+    {
+      "id": "sms_002",
+      "patient_id": "pat_004",
+      "appointment_id": "appt_004",
+      "type": "reminder_72h",
+      "status": "not_sent",
+      "sent_at": null,
+      "message": null,
+      "patient_reply": null,
+      "note": "Patient opted out of SMS. Staff must confirm via phone call.",
+      "action_required": true
+    },
+    {
+      "id": "sms_003",
+      "patient_id": "pat_003",
+      "appointment_id": "appt_003",
+      "type": "reminder_2h",
+      "status": "delivered",
+      "sent_at": "2026-05-16T09:00:00Z",
+      "message": "Hi Denise! Your virtual therapy session with Dr. Janet Kim starts in 2 hours at 11:00 AM PT. Join here: https://astralace.example.com/join/appt_003",
+      "patient_reply": null,
+      "reply_received_at": null
+    }
+  ],
+  "email_queue": [
+    {
+      "id": "email_001",
+      "patient_id": "pat_003",
+      "appointment_id": "appt_003",
+      "type": "post_visit_followup",
+      "status": "draft_pending_review",
+      "generated_at": "2026-05-16T12:30:00Z",
+      "reviewed_by": null,
+      "sent_at": null,
+      "subject": "Your care summary from today's session with Dr. Kim",
+      "body_preview": "Hi Denise, thank you for meeting with Dr. Janet Kim today. Here's a quick summary of what we covered and your next steps...",
+      "ai_generated": true,
+      "includes_next_steps": true,
+      "includes_resources": ["Postpartum Support International", "Sleep hygiene guide"],
+      "language": "English"
+    },
+    {
+      "id": "email_002",
+      "patient_id": "pat_002",
+      "appointment_id": "appt_002",
+      "type": "appointment_confirmation",
+      "status": "sent",
+      "generated_at": "2026-05-18T08:00:00Z",
+      "reviewed_by": "staff_ai_ops_01",
+      "sent_at": "2026-05-18T08:05:00Z",
+      "subject": "Your 20-week visit is confirmed, May 21 at 9:00 AM",
+      "body_preview": "Hi Sofia! Your in-person anatomy scan review with Dr. Maria Gonzalez is confirmed for Wednesday, May 21...",
+      "ai_generated": true,
+      "open_rate": null,
+      "language": "English"
+    },
+    {
+      "id": "email_003",
+      "patient_id": "pat_005",
+      "appointment_id": null,
+      "type": "waitlist_notification",
+      "status": "pending",
+      "generated_at": null,
+      "reviewed_by": null,
+      "sent_at": null,
+      "subject": "Update on your Astralace appointment request",
+      "body_preview": "Hola Carmen, gracias por su paciencia. Estamos buscando el especialista más adecuado para usted...",
+      "ai_generated": false,
+      "language": "Spanish",
+      "note": "Waiting on AI matching to resolve prov_005 capacity issue before sending."
+    }
+  ]
+}
