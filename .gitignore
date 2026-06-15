@@ -1,0 +1,36 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Agent output (generated at runtime: sample committed separately)
+agents/output/final_prd.md
+agents/output/review_log.json
+agents/output/care_plan_*.json
+agents/output/care_intro_*.txt
+agents/output/blocked_*.json
+
+# Prototype agents: under evaluation for inclusion
+agents/scheduling_agent.py
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Cowork / Claude internals
+CLAUDE.md
+memory/
+TASKS.md
