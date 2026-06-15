@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astralace Women's Health: Agent Architecture</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+<style>
+  :root {
+    --brand-blue: #1A5F7A;
+    --brand-teal: #2E9E8F;
+    --light-bg: #F4F6F8;
+    --dark: #1C2B36;
+    --mid: #9EA8B3;
+    --accent: #E8F4F2;
+    --planned: #FFF8E7;
+    --planned-border: #F0C040;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #fff;
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 0 0 80px;
+  }
+
+  header {
+    background: var(--brand-blue);
+    color: white;
+    padding: 40px 60px 32px;
+  }
+  header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+  nav {
+    background: var(--light-bg);
+    border-bottom: 1px solid #dde2e7;
+    padding: 12px 60px;
+    display: flex; gap: 28px;
+  }
+  nav a {
+    font-size: 13px; font-weight: 600; color: var(--brand-blue);
+    text-decoration: none; letter-spacing: .02em;
+  }
+  nav a:hover { color: var(--brand-teal); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+  section { margin-top: 52px; }
+
+  h2 {
+    font-size: 20px; font-weight: 700; color: var(--brand-blue);
+    border-bottom: 2px solid var(--brand-teal);
+    padding-bottom: 8px; margin-bottom: 24px;
+  }
+  h3 { font-size: 15px; font-weight: 700; color: var(--brand-teal); margin: 24px 0 10px; }
+
+  p  { font-size: 14px; color: #3a4a56; margin-bottom: 10px; }
+
+  .diagram-card {
+    background: var(--light-bg);
+    border: 1px solid #dde2e7;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+  .diagram-card h3 { margin-top: 0; font-size: 14px; }
+
+  .mermaid { margin: 0 auto; }
+
+  /* Data table */
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; margin-top: 12px;
+  }
+  th {
+    background: var(--brand-blue); color: white;
+    padding: 10px 14px; text-align: left; font-weight: 600;
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid #e4e8ec; }
+  tr:nth-child(even) td { background: var(--light-bg); }
+  .yes { color: #2E9E8F; font-weight: 700; }
+  .no  { color: #C0392B; font-weight: 700; }
+  .note { color: var(--mid); font-size: 12px; }
+
+  /* Planned agents */
+  .planned-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .planned-card {
+    background: var(--planned);
+    border: 1px solid var(--planned-border);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .planned-card h4 {
+    font-size: 14px; font-weight: 700; color: #8a6000;
+    margin-bottom: 6px;
+  }
+  .planned-card p { font-size: 13px; color: #5a4000; margin-bottom: 4px; }
+  .tag {
+    display: inline-block;
+    background: rgba(240,192,64,0.3);
+    color: #8a6000;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Validator pattern */
+  .code-block {
+    background: #1C2B36; color: #a8d8c8;
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 12px; line-height: 1.7;
+    padding: 20px 24px; border-radius: 8px;
+    overflow-x: auto; margin-top: 12px;
+  }
+  .code-block .kw  { color: #7ec8e3; }
+  .code-block .str { color: #a8d8a8; }
+  .code-block .cm  { color: #5a7a7a; }
+
+  .principle-box {
+    background: var(--accent);
+    border-left: 4px solid var(--brand-teal);
+    padding: 14px 18px; border-radius: 0 8px 8px 0;
+    font-size: 13px; color: #1a3a36;
+    margin-top: 16px;
+  }
+
+  footer {
+    margin-top: 64px; padding: 20px 60px;
+    border-top: 1px solid #e4e8ec;
+    font-size: 12px; color: var(--mid);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌸 Astralace Women's Health: Agent Architecture</h1>
+  <p>Portfolio Demo · AI-Powered Clinical Operations · Non-HIPAA Scope</p>
+</header>
+
+<nav>
+  <a href="#overview">Overview</a>
+  <a href="#care-coordination">Care Coordination Agent</a>
+  <a href="#data-boundaries">Data Boundaries</a>
+  <a href="#planned">Planned Agents</a>
+  <a href="#validator">Validator Pattern</a>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <h2>System Overview</h2>
+  <div class="diagram-card">
+    <div class="mermaid">
+flowchart LR
+  subgraph agents["Agent Layer"]
+    B["🏥 Care Coordination Agent\nTC orchestrates · Planner selects team\nValidator guards · Intro drafter writes"]
+    C["[Planned]\nInsurance · Follow-up\nSMS · Pathway Variants"]
+  end
+  subgraph data["Data Layer  (mock-data/)"]
+    D[(providers.json\n14 providers)]
+    E[(patients.json\ncare_stage · pregnancy_week)]
+    F[(care-pathways.json\nstandard + variant schemas)]
+    G[(schedules.json\ncomms-queue.json)]
+  end
+  B --> D & E & F
+  style C fill:#FFF8E7,stroke:#F0C040,color:#8a6000
+    </div>
+  </div>
+</section>
+
+<!-- CARE COORDINATION AGENT -->
+<section id="care-coordination">
+  <h2>The Care Coordination Agent <code style="font-size:13px;color:var(--mid)">care_coordination_agent.py</code></h2>
+  <p>
+    Event-driven, proactive care team planning for maternity and postpartum journeys.
+    The Transition Coordinator (TC) wakes on stage milestone events and orchestrates a pipeline that selects,
+    validates, and introduces a patient's care team, <em>before</em> problems arise, not after.
+  </p>
+  <p>
+    <strong>Demo scenario:</strong> Sofia Nguyen (TX · 26 weeks · T2) triggers a T2→T3 stage transition.
+    The TC plans her third-trimester care team, validates state licensure and patient preferences,
+    then drafts a warm patient-facing care team introduction.
+  </p>
+
+  <div class="diagram-card">
+    <div class="mermaid">
+flowchart TD
+  EV["⚡ Event Trigger\nstage_milestone · week 26\nPatient: Sofia · TX · T2→T3"]
+  TC["🏥 Transition Coordinator\nLangGraph persistent state\nEvent-driven orchestrator"]
+  PF["🔎 Provider Filter\nDB lookup, not an LLM\nFilters: licensed_states · accepting_new_patients\nMaps specialty → pathway provider_type"]
+  CP["🧠 Care Team Planner\nSonnet 4.6\nSelects best provider per intervention\nReturns CarePlanRecommendation"]
+  VA["✅ Validator\nOpus 4.7\n6 hard checks · ValidationResult"]
+  DR["✍️ Care Team Patient Intro Drafter\nSonnet 4.6\nPatient-facing · warm tone\nNo clinical jargon"]
+  OUT["💾 Output\ncare_plan_*.json  ← clinic audit log\ncare_intro_*.txt  ← patient-facing"]
+  BL["⛔ Block Node\nblocked_care_plan_*.json\nRoutes to staff queue"]
+
+  EV --> TC --> PF
+  PF -->|"candidates"| CP
+  CP --> VA
+  VA -->|"pass"| DR --> OUT
+  VA -->|"fail · retry ≤ 2x"| CP
+  VA -->|"max retries exceeded"| BL
+
+  style EV fill:#EAF0F8,stroke:#1A5F7A
+  style TC fill:#E8F4F2,stroke:#2E9E8F,stroke-width:2px
+  style PF fill:#F4F6F8,stroke:#9EA8B3,stroke-dasharray:5
+  style CP fill:#E8F4F2,stroke:#2E9E8F
+  style VA fill:#EAF0F8,stroke:#1A5F7A
+  style DR fill:#E8F4F2,stroke:#2E9E8F
+  style BL fill:#FDE8E8,stroke:#C0392B
+    </div>
+  </div>
+
+  <h3>Provider Filter: Logic, Not LLM</h3>
+  <p>The provider filter is a pure Python function, no model call. It enforces hard constraints that don't require reasoning:</p>
+  <table>
+    <tr><th>Filter</th><th>Rule</th></tr>
+    <tr><td>State license</td><td>Provider's <code>licensed_states</code> must include patient's state (or be <code>"all"</code> for non-licensed roles like coaching)</td></tr>
+    <tr><td>Availability</td><td><code>accepting_new_patients = true</code></td></tr>
+    <tr><td>Specialty match</td><td>Provider specialty maps to at least one <code>provider_type</code> required by the target stage interventions</td></tr>
+  </table>
+
+  <h3>Validator: 6 Hard Checks</h3>
+  <table>
+    <tr><th>#</th><th>Check</th><th>What it catches</th></tr>
+    <tr><td>1</td><td>state_license_valid</td><td>Recommended provider not licensed in patient's state</td></tr>
+    <tr><td>2</td><td>accepting_new_patients</td><td>Provider has closed panel, filter missed it or candidate was updated</td></tr>
+    <tr><td>3</td><td>no_hallucinated_ids</td><td>Planner invented a provider_id not in the candidate list</td></tr>
+    <tr><td>4</td><td>continuity_preserved</td><td>Provider with <code>continuity_required=true</code> from current stage dropped without explanation</td></tr>
+    <tr><td>5</td><td>unmet_needs_flagged</td><td>Required provider type has no candidate but <code>unmet_needs</code> is empty, silent gap</td></tr>
+    <tr><td>6</td><td>language_preference_met</td><td>Patient requires a specific language but no provider in the plan speaks it</td></tr>
+  </table>
+
+  <h3>Care Pathway Design: Proactive vs Reactive</h3>
+  <p>
+    The standard maternity pathway spans four stages (T1 → T2 → T3 → Postpartum).
+    Each stage defines required provider types, interventions, <code>evidence_level</code>
+    (<code>established</code> or <code>emerging</code>), and a <code>proactive_trigger_week</code>
+: the week the TC initiates planning, before the stage begins.
+  </p>
+  <table>
+    <tr><th>Stage</th><th>Weeks</th><th>Proactive provider introductions</th></tr>
+    <tr><td>T1</td><td>1-12</td><td>OB-GYN · Registered Dietitian (GD prevention) · Therapist · Career Coach (leave planning)</td></tr>
+    <tr><td>T2</td><td>13-27</td><td>OB-GYN · Pelvic Floor PT · Dietitian (GD screening) · Career Coach (handoff planning)</td></tr>
+    <tr><td>T3</td><td>28-40</td><td>OB-GYN · Pelvic Floor PT · Lactation Consultant (LC) intro · Pediatrician intro · Career Coach (RTW plan)</td></tr>
+    <tr><td>Postpartum</td><td>0-12 pp</td><td>OB-GYN · LC · Pelvic Floor PT · Therapist · Career Coach (re-entry support)</td></tr>
+  </table>
+
+  <div class="principle-box" style="margin-top:20px">
+    <strong>Design principle, proactive over reactive:</strong> The LC and pediatrician are introduced
+    in T3 (weeks 34-36), before birth. Evidence shows meeting the LC prenatally significantly improves
+    breastfeeding duration. The career coach enters at T1 to design the leave plan, not at postpartum
+    when re-entry anxiety is already acute.
+  </div>
+
+  <h3>Future Pathway Variants <span style="font-weight:400;color:var(--mid)">(data modeled, not yet implemented)</span></h3>
+  <p>The care-pathways.json data layer includes schema stubs for three future variants that extend the standard pathway:</p>
+  <table>
+    <tr><th>Variant</th><th>Trigger</th><th>Additional providers</th></tr>
+    <tr><td>Gestational Diabetes (GD)</td><td>GD confirmed at 24-28 wk screening</td><td>Endocrinologist · intensified dietitian cadence</td></tr>
+    <tr><td>Mental Health Risk</td><td>Clinician-flagged at intake</td><td>Psychiatrist introduced in T1 (<code>who_flagged_need: clinician_flagged_need</code>)</td></tr>
+    <tr><td>High-Risk OB</td><td>Advanced maternal age, multiples, or pre-existing conditions</td><td>Maternal-fetal medicine (MFM) specialist</td></tr>
+  </table>
+</section>
+
+<!-- DATA BOUNDARIES -->
+<section id="data-boundaries">
+  <h2>Data Access Boundaries</h2>
+  <div class="principle-box">
+    <strong>Design principle:</strong> Agents receive only the minimum data needed for their task.
+    Sensitive identifiers are stripped before any LLM prompt is constructed.
+    Clinical data is never in scope.
+  </div>
+
+  <table style="margin-top:20px">
+    <tr>
+      <th>Data</th>
+      <th>Care Coordination Agent</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Patient first name</td>
+      <td class="yes">✅</td>
+      <td class="note">Patient intro greeting only</td>
+    </tr>
+    <tr>
+      <td>Care stage + pregnancy week</td>
+      <td class="yes">✅</td>
+      <td class="note">Drives TC stage transition logic</td>
+    </tr>
+    <tr>
+      <td>Patient state (location)</td>
+      <td class="yes">✅</td>
+      <td class="note">Hard constraint for state licensure check</td>
+    </tr>
+    <tr>
+      <td>Matching preferences (gender, language, modality)</td>
+      <td class="yes">✅</td>
+      <td class="note">Passed to Planner for preference-aware selection</td>
+    </tr>
+    <tr>
+      <td>Provider name + credentials</td>
+      <td class="yes">✅</td>
+      <td class="note"></td>
+    </tr>
+    <tr>
+      <td>Provider licensed_states</td>
+      <td class="yes">✅</td>
+      <td class="note">Filter and validator use this, never sent to LLM raw</td>
+    </tr>
+    <tr>
+      <td>Care pathway templates</td>
+      <td class="yes">✅</td>
+      <td class="note">Stage definitions, intervention types, evidence levels</td>
+    </tr>
+    <tr>
+      <td><strong>Patient date of birth</strong></td>
+      <td class="no">❌</td>
+      <td class="note">Not exposed to any agent</td>
+    </tr>
+    <tr>
+      <td><strong>Insurance ID / plan</strong></td>
+      <td class="no">❌</td>
+      <td class="note">Planned Insurance Agent handles via secure API, never in LLM prompt</td>
+    </tr>
+    <tr>
+      <td><strong>Clinical notes / diagnoses</strong></td>
+      <td class="no">❌</td>
+      <td class="note">HIPAA boundary, permanently out of scope</td>
+    </tr>
+    <tr>
+      <td><strong>Billing / payment data</strong></td>
+      <td class="no">❌</td>
+      <td class="note">Out of scope for all agents in this demo</td>
+    </tr>
+  </table>
+</section>
+
+<!-- PLANNED AGENTS -->
+<section id="planned">
+  <h2>Planned Agents: Future Roadmap</h2>
+  <p>Designed in the architecture but not yet implemented. Each is called out to show intentional product thinking about what comes next.</p>
+
+  <div class="planned-grid">
+    <div class="planned-card">
+      <span class="tag">FUTURE</span>
+      <h4>🏥 Insurance Eligibility Agent</h4>
+      <p><strong>Trigger:</strong> Before care plan is confirmed</p>
+      <p><strong>Purpose:</strong> Verify patient insurance covers each recommended provider and visit type before the care plan is sent to the patient</p>
+      <p><strong>Design note:</strong> Insurance data handled via secure API (e.g. Availity), never passed to LLM prompt. Agent receives only eligibility verdict + estimated cost.</p>
+    </div>
+    <div class="planned-card">
+      <span class="tag">FUTURE</span>
+      <h4>📧 Post-Visit Follow-Up Agent</h4>
+      <p><strong>Trigger:</strong> 2 hours after visit completion</p>
+      <p><strong>Purpose:</strong> Generate post-visit summary with next steps and stage-appropriate resources</p>
+      <p><strong>Validator checks:</strong> No clinical diagnosis language, correct provider sign-off, resource links valid, language matches patient preference</p>
+    </div>
+    <div class="planned-card">
+      <span class="tag">FUTURE</span>
+      <h4>📱 SMS Reminder Agent</h4>
+      <p><strong>Trigger:</strong> T-72h, T-24h, T-2h before appointment</p>
+      <p><strong>Purpose:</strong> Send structured reminders; handle CONFIRM / CANCEL / RESCHEDULE replies</p>
+      <p><strong>Guardrail:</strong> Hard block if patient on opt-out list, no retry, no override</p>
+    </div>
+    <div class="planned-card">
+      <span class="tag">FUTURE</span>
+      <h4>🔀 Pathway Variant Engine</h4>
+      <p><strong>Trigger:</strong> Clinician flags risk condition at intake or screening</p>
+      <p><strong>Purpose:</strong> Extend standard maternity pathway with variant-specific providers (GD, mental health risk, high-risk OB)</p>
+      <p><strong>Design note:</strong> Variant schemas already modeled in care-pathways.json. Activation is always <code>clinician_flagged_need</code>, never auto-triggered by agent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALIDATOR PATTERN -->
+<section id="validator">
+  <h2>Validator Pattern</h2>
+  <p>Both agents use Opus as a <strong>structured-output validator</strong> via Pydantic models. This ensures deterministic checks, typed results, and a complete audit trail, no free-form parsing.</p>
+
+  <div class="code-block"><span class="cm"># Structured output, Opus returns this, not free-form text</span>
+<span class="kw">class</span> ValidationResult(BaseModel):
+    passed: <span class="kw">bool</span>
+    checks: list[ValidationCheck]  <span class="cm"># named check + pass/fail + detail</span>
+    failures: list[<span class="kw">str</span>]            <span class="cm"># empty if passed=True</span>
+    fix_instructions: <span class="kw">str</span>           <span class="cm"># fed back to upstream agent on retry</span>
+
+<span class="cm"># Router uses typed result, no parsing, no ambiguity</span>
+<span class="kw">def</span> route_after_validation(state) -> <span class="kw">str</span>:
+    <span class="kw">if</span> state.validation.passed:                          <span class="kw">return</span> <span class="str">"draft"</span>
+    <span class="kw">if</span> state.validation_attempts >= MAX_RETRIES:         <span class="kw">return</span> <span class="str">"block"</span>
+    <span class="kw">return</span> <span class="str">"replan"</span></div>
+
+  <div class="principle-box" style="margin-top:20px">
+    <strong>Why this matters:</strong> In agentic systems that touch patient care decisions,
+    "probably correct" isn't acceptable. Structured validation with a hard block path ensures
+    the system fails safely, routing to a human staff queue rather than sending a flawed
+    care plan to a patient.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Astralace Women's Health · Portfolio Demo · Built with LangGraph + Anthropic Claude ·
+  <a href="https://github.com/megano/ai-agents-telehealth-platform" style="color:var(--brand-teal)">GitHub</a>
+</footer>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#E8F4F2',
+      primaryBorderColor: '#2E9E8F',
+      primaryTextColor: '#1C2B36',
+      lineColor: '#2E9E8F',
+      secondaryColor: '#EAF0F8',
+      tertiaryColor: '#F4F6F8',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      fontSize: '13px'
+    }
+  });
+</script>
+</body>
+</html>
