@@ -200,7 +200,7 @@ flowchart TD
   TC["🏥 Transition Coordinator\nLangGraph persistent state\nEvent-driven orchestrator"]
   PF["🔎 Provider Filter\nDB lookup, not an LLM\nFilters: licensed_states · accepting_new_patients\nMaps specialty → pathway provider_type"]
   CP["🧠 Care Team Planner\nSonnet 4.6\nSelects best provider per intervention\nReturns CarePlanRecommendation"]
-  VA["✅ Validator\nOpus 4.7\n6 hard checks · ValidationResult"]
+  VA["✅ Validator\ndeterministic\n6 hard checks · ValidationResult"]
   DR["✍️ Care Team Patient Intro Drafter\nSonnet 4.6\nPatient-facing · warm tone\nNo clinical jargon"]
   OUT["💾 Output\ncare_plan_*.json  ← clinic audit log\ncare_intro_*.txt  ← patient-facing"]
   BL["⛔ Block Node\nblocked_care_plan_*.json\nRoutes to staff queue"]
@@ -387,9 +387,9 @@ flowchart TD
 <!-- VALIDATOR PATTERN -->
 <section id="validator">
   <h2>Validator Pattern</h2>
-  <p>Both agents use Opus as a <strong>structured-output validator</strong> via Pydantic models. This ensures deterministic checks, typed results, and a complete audit trail, no free-form parsing.</p>
+  <p>The validator is <strong>deterministic Python, not a model</strong>. The six checks are factual lookups (state-license tables, set membership, boolean fields), so they run in code and are guaranteed correct and reproducible. Results are typed Pydantic (<code>ValidationResult</code>) for a clean audit trail and unambiguous routing.</p>
 
-  <div class="code-block"><span class="cm"># Structured output, Opus returns this, not free-form text</span>
+  <div class="code-block"><span class="cm"># Typed result the deterministic checks return</span>
 <span class="kw">class</span> ValidationResult(BaseModel):
     passed: <span class="kw">bool</span>
     checks: list[ValidationCheck]  <span class="cm"># named check + pass/fail + detail</span>

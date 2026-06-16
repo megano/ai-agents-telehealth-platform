@@ -7,7 +7,7 @@ Architecture:
   Transition Coordinator (TC): persistent LangGraph orchestrator, wakes on events
   Provider Filter: DB lookup, not an LLM (filters by state license, availability)
   Care Team Planner: Sonnet, reasons over candidates → CarePlanRecommendation
-  Validator: Opus, hard checks → ValidationResult
+  Validator: deterministic code, 6 hard checks → ValidationResult
   Care Team Patient Intro Drafter: Sonnet, writes patient-facing care team intro
 
 Demo scenario:
@@ -41,12 +41,11 @@ load_dotenv()
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 # ── Config ────────────────────────────────────────────────────────────────────
-# Models are overridable via environment variables. Defaults: Sonnet for the
-# writer/planner/drafter, Opus 4.8 for the validator (4.7 is legacy).
+# Models are overridable via environment variables. The Planner and Drafter use
+# Sonnet. The Validator is deterministic code (no model), so it has no setting.
 
-PLANNER_MODEL   = os.getenv("PLANNER_MODEL",   "claude-sonnet-4-6")
-VALIDATOR_MODEL = os.getenv("VALIDATOR_MODEL", "claude-opus-4-8")
-DRAFTER_MODEL   = os.getenv("DRAFTER_MODEL",   "claude-sonnet-4-6")
+PLANNER_MODEL = os.getenv("PLANNER_MODEL", "claude-sonnet-4-6")
+DRAFTER_MODEL = os.getenv("DRAFTER_MODEL", "claude-sonnet-4-6")
 
 MAX_VALIDATION_RETRIES = 2
 
@@ -152,12 +151,6 @@ planner_llm = ChatAnthropic(
     temperature=0.3,
 ).with_structured_output(CarePlanRecommendation)
 
-validator_llm = ChatAnthropic(
-    model=VALIDATOR_MODEL,
-    max_tokens=2048,
-    temperature=0.0,
-).with_structured_output(ValidationResult)
-
 drafter_llm = ChatAnthropic(
     model=DRAFTER_MODEL,
     max_tokens=2048,
@@ -183,24 +176,6 @@ Selection rules:
    hallucinate a provider.
 
 Return a structured CarePlanRecommendation.
-"""
-
-VALIDATOR_SYSTEM = """You are the Care Plan Validator for Astralace Women's Health.
-You are a safety critic, your job is to catch errors before a care plan reaches a patient.
-
-Run these checks on the recommended care plan:
-1. state_license_valid: every recommended provider is licensed in the patient's state
-2. accepting_new_patients: every provider has accepting_new_patients=true
-3. no_hallucinated_ids: every provider_id exists in the provided candidate list
-4. continuity_preserved: any provider flagged continuity_required in the current stage
-                               is included in the recommendation (or explicitly noted as unavailable)
-5. unmet_needs_flagged: if pathway requires a provider type with no candidate,
-                               unmet_needs is non-empty (not silently skipped)
-6. language_preference_met: if patient requires a specific language, at least one provider
-                               per required type speaks that language (or unmet_needs flags it)
-
-Return a ValidationResult. If any check fails, set passed=False and provide
-concrete fix_instructions the Planner can act on immediately.
 """
 
 DRAFTER_SYSTEM = """You are writing a warm, friendly care team introduction for a patient
@@ -364,57 +339,123 @@ Select the best provider for each required intervention. Return a CarePlanRecomm
     return TCState(**{**state.model_dump(), "recommendation": recommendation})
 
 
+# ── Validator: deterministic hard checks (no LLM) ─────────────────────────────
+# All six checks are factual lookups against structured data: state-license
+# tables, set membership, boolean fields, language lists. They are computed in
+# code so the result is guaranteed correct and reproducible, and the safety
+# layer can be unit-tested without an API key. The LLM's judgment work lives in
+# the Planner (provider selection), not here.
+
+def run_validation_checks(state: TCState) -> ValidationResult:
+    patient = state.patient
+    rec = state.recommendation
+    candidates_by_id = {p["id"]: p for p in state.candidate_providers}
+    candidate_ids = set(candidates_by_id)
+    patient_state = patient["location"]["state"]
+    patient_language = patient.get("language")
+    rec_providers = rec.recommended_providers if rec else []
+    unmet = set(rec.unmet_needs) if rec else set()
+
+    target_stage_data = next(
+        s for s in state.pathway["stages"] if s["id"] == state.target_stage
+    )
+    required_types = {i["provider_type"] for i in target_stage_data["interventions"]}
+    available_types = {c["_inferred_type"] for c in state.candidate_providers}
+
+    continuity_types = set()
+    current_stage_id = patient.get("care_stage", "")
+    if current_stage_id:
+        csd = next((s for s in state.pathway["stages"] if s["id"] == current_stage_id), None)
+        if csd:
+            continuity_types = {
+                i["provider_type"] for i in csd["interventions"] if i.get("continuity_required")
+            }
+
+    checks: list[ValidationCheck] = []
+    failures: list[str] = []
+    fixes: list[str] = []
+
+    def record(name: str, passed: bool, detail: str, fix: str = "") -> None:
+        checks.append(ValidationCheck(check=name, passed=passed, detail=detail))
+        if not passed:
+            failures.append(name)
+            if fix:
+                fixes.append(fix)
+
+    # 1. no_hallucinated_ids
+    bad_ids = [rp.provider_id for rp in rec_providers if rp.provider_id not in candidate_ids]
+    record("no_hallucinated_ids", not bad_ids,
+           "all recommended IDs exist in the candidate list" if not bad_ids
+           else f"IDs not in candidate list: {bad_ids}",
+           f"Remove providers not in the candidate list: {bad_ids}." if bad_ids else "")
+
+    # 2. state_license_valid
+    bad = []
+    for rp in rec_providers:
+        prov = candidates_by_id.get(rp.provider_id)
+        if not prov:
+            continue  # already caught by no_hallucinated_ids
+        lic = prov.get("licensed_states")
+        if lic != "all" and patient_state not in (lic or []):
+            bad.append(rp.provider_id)
+    record("state_license_valid", not bad,
+           f"all recommended providers licensed in {patient_state}" if not bad
+           else f"not licensed in {patient_state}: {bad}",
+           f"Replace providers not licensed in {patient_state}: {bad}." if bad else "")
+
+    # 3. accepting_new_patients
+    bad = [rp.provider_id for rp in rec_providers
+           if (prov := candidates_by_id.get(rp.provider_id)) and not prov.get("accepting_new_patients", False)]
+    record("accepting_new_patients", not bad,
+           "all recommended providers accept new patients" if not bad
+           else f"closed panel: {bad}",
+           f"Replace providers with closed panels: {bad}." if bad else "")
+
+    # 4. continuity_preserved
+    rec_types = {rp.provider_type for rp in rec_providers}
+    missing = [t for t in continuity_types
+               if t not in rec_types and t not in unmet and t in available_types]
+    record("continuity_preserved", not missing,
+           "continuity-required provider types preserved" if not missing
+           else f"continuity types dropped without flag: {missing}",
+           f"Carry forward continuity providers for: {missing} (or flag in unmet_needs)." if missing else "")
+
+    # 5. unmet_needs_flagged
+    unfilled = required_types - available_types
+    not_flagged = [t for t in unfilled if t not in unmet]
+    record("unmet_needs_flagged", not not_flagged,
+           "all unfillable required types are flagged in unmet_needs" if not not_flagged
+           else f"required types with no candidate, not flagged: {not_flagged}",
+           f"Add to unmet_needs: {not_flagged}." if not_flagged else "")
+
+    # 6. language_preference_met
+    bad = []
+    if patient_language:
+        for rp in rec_providers:
+            prov = candidates_by_id.get(rp.provider_id)
+            if prov and patient_language not in (prov.get("languages") or []):
+                bad.append(rp.provider_id)
+    record("language_preference_met", not bad,
+           f"all recommended providers speak {patient_language}" if not bad
+           else f"do not speak {patient_language}: {bad}",
+           f"Replace or flag providers who do not speak {patient_language}: {bad}." if bad else "")
+
+    passed = not failures
+    return ValidationResult(
+        passed=passed,
+        checks=checks,
+        failures=failures,
+        fix_instructions="" if passed else " ".join(fixes),
+    )
+
+
 def validator_node(state: TCState) -> TCState:
-    """Validator (Opus), hard checks on the care plan recommendation."""
+    """Validator (deterministic): six hard checks computed in code, no LLM."""
     print(f"\n{'='*60}")
-    print(f"✅  VALIDATOR")
+    print(f"✅  VALIDATOR (deterministic)")
     print(f"{'='*60}")
 
-    # Build candidate ID set for hallucination check
-    candidate_ids = {p["id"] for p in state.candidate_providers}
-
-    # Identify continuity providers from current stage
-    current_stage_id = state.patient.get("care_stage", "")
-    continuity_providers = []
-    if current_stage_id:
-        current_stage_data = next(
-            (s for s in state.pathway["stages"] if s["id"] == current_stage_id), None
-        )
-        if current_stage_data:
-            continuity_types = [
-                i["provider_type"] for i in current_stage_data["interventions"]
-                if i.get("continuity_required")
-            ]
-            continuity_providers = [
-                p for p in state.candidate_providers
-                if p["_inferred_type"] in continuity_types
-            ]
-
-    user_prompt = f"""Validate this care plan recommendation.
-
-PATIENT:
-- State: {state.patient['location']['state']}
-- Language: {state.patient['language']}
-- Current stage: {state.patient.get('care_stage', 'unknown')}
-
-RECOMMENDATION:
-{json.dumps(state.recommendation.model_dump(), indent=2)}
-
-VALID CANDIDATE IDs (for hallucination check):
-{json.dumps(list(candidate_ids))}
-
-CONTINUITY PROVIDERS (must be preserved if available):
-{json.dumps([{{'id': p['id'], 'name': p['name'], 'type': p['_inferred_type']}} for p in continuity_providers])}
-
-Run all 6 validation checks and return a ValidationResult.
-"""
-
-    messages = [
-        SystemMessage(content=VALIDATOR_SYSTEM),
-        HumanMessage(content=user_prompt),
-    ]
-
-    validation: ValidationResult = validator_llm.invoke(messages)
+    validation = run_validation_checks(state)
 
     print(f"Validation: {'PASS ✓' if validation.passed else 'FAIL ✗'}")
     for check in validation.checks:

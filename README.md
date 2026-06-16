@@ -31,7 +31,7 @@ flowchart TD
   EV["⚡ Event: stage_milestone\nSofia · TX · week 26"] --> TC["🏥 Transition Coordinator\nLangGraph persistent state"]
   TC --> PF["🔎 Provider Filter\nDB lookup, not an LLM"]
   PF -->|candidates| CP["🧠 Care Team Planner\nSonnet · CarePlanRecommendation"]
-  CP --> VA["✅ Validator\nOpus · 6 hard checks · ValidationResult"]
+  CP --> VA["✅ Validator\ndeterministic · 6 hard checks"]
   VA -->|pass| DR["✍️ Care Team Patient Intro Drafter\nSonnet · patient-facing"]
   DR --> OUT["💾 care_plan_*.json\ncare_intro_*.txt"]
   VA -->|"fail · retry ≤ 2x"| CP
@@ -50,6 +50,8 @@ python agents/care_coordination_agent.py --patient pat_002
 **Design decisions worth noting:**
 
 *Provider Filter is not an LLM.* State licensure checks and availability filters are deterministic. Running them as a DB-style function before the Planner reduces token cost, removes hallucination surface area, and keeps the model focused on reasoning, not lookups.
+
+*Validator is code, not a model.* Every check is a factual yes/no from a data field (licensed in-state? panel open? ID real?). Facts don't need judgment, and code gets them right every time.
 
 *Validator blocks, not retries forever.* After 2 failed attempts, the plan routes to a staff queue rather than degrading silently. In a system touching patient care decisions, "probably correct" isn't acceptable.
 
@@ -106,7 +108,7 @@ All data is synthetic. Located in `mock-data/`:
 | | |
 |--|--|
 | **Orchestration** | LangGraph: StateGraph, conditional routing, persistent TC state |
-| **Models** | `claude-sonnet-4-6` (writer / planner / drafter) · `claude-opus-4-8` (reviewer / validator) |
+| **Models** | `claude-sonnet-4-6` (planner / drafter). Validator is deterministic code, no model. |
 | **Structured outputs** | Pydantic: `ReviewResult`, `CarePlanRecommendation`, `ValidationResult` |
 | **LLM client** | langchain-anthropic: `.with_structured_output()` for typed model responses |
 | **Runtime** | Python 3.11+ |
@@ -132,9 +134,8 @@ variables, so you can run the demo on whatever you have access to:
 
 | Variable | Default | Role |
 |----------|---------|------|
-| `PLANNER_MODEL`   | `claude-sonnet-4-6` | Care Team Planner |
-| `VALIDATOR_MODEL` | `claude-opus-4-8`   | Validator (safety critic) |
-| `DRAFTER_MODEL`   | `claude-sonnet-4-6` | Patient Intro Drafter |
+| `PLANNER_MODEL` | `claude-sonnet-4-6` | Care Team Planner |
+| `DRAFTER_MODEL` | `claude-sonnet-4-6` | Patient Intro Drafter |
 
 Set them in `.env` or your shell to override.
 
