@@ -17,6 +17,7 @@ The lactation consultant is introduced at week 34, before birth, not after a str
 This repo is a portfolio demo that uses a fictional Maven-style women's telehealth clinic to showcase:
 
 - **Proactive care coordination**: event-driven agents that plan ahead, not triage after
+- **Preference-weighted matching**: per-patient weighted provider ranking over a deterministic eligibility floor
 - **Multi-agent system design**: LangGraph orchestration, structured outputs, validator-as-safety-critic
 - **Product thinking**: care pathway design, clinical workflow constraints, data modeling
 
@@ -65,6 +66,50 @@ python agents/care_coordination_agent.py --patient pat_002
 | `continuity_preserved` | Required continuity provider dropped without explanation |
 | `unmet_needs_flagged` | Required provider type silently missing from plan |
 | `language_preference_met` | Patient language need unmet |
+
+---
+
+## The Care Matching Agent [`agents/care_matching_agent.py`]
+
+Ranks the clinic's eligible providers for a patient by that patient's *weighted* preferences, producing a recommendation plus rationale for a human coordinator. The weights come from the individual patient's own signals (explicit intake asks weigh highest; inferred behavioral signals weigh weakly and never override an explicit one), never from demographic assumptions.
+
+```mermaid
+flowchart TD
+  PT["👤 Patient + preference_profile\nDenise · CA · postpartum"] --> EF["🔎 Eligibility Filter\ndeterministic"]
+  EF -->|"eligible"| MM["🧠 Matcher\nSonnet · weighted per-role ranking"]
+  EF -->|"0 results"| RX["♻️ Progressive Relaxation\ndeterministic · minimal set"]
+  RX -->|"near-matches, tagged"| MM
+  EF -->|"no legal floor"| ESC["⛔ Staff Queue\nexpand network"]
+  MM --> OUT["💾 ranked recommendation\n+ rationale per provider"]
+
+  style EF stroke-dasharray:5
+  style RX stroke-dasharray:5
+  style ESC fill:#fdecea,stroke:#c0392b
+```
+
+**Two-layer eligibility:**
+
+- **Legal floor, never relaxed:** state license and `accepting_new_patients`. Zero results here is an *escalation* (expand network / staff queue), not a relaxation. Relaxing a license would recommend a provider who cannot legally treat the patient.
+- **Firm constraints, relaxable:** language, scheduling daypart, gender, modality. When no provider satisfies all of them, the filter drops the **minimum** set (smallest, least-costly) needed to surface near-matches, and tags exactly what it relaxed. It never silently widens a constraint.
+
+```bash
+# Rank the full care team for a patient's current stage
+python agents/care_matching_agent.py --patient pat_003
+
+# Focus one role
+python agents/care_matching_agent.py --patient pat_003 --role therapist
+
+# Deterministic filter + relaxation only, no API key needed
+python agents/care_matching_agent.py --patient pat_021 --role pelvic_floor_pt --no-llm
+```
+
+**Design decisions worth noting:**
+
+*The eligibility floor is code, the ranking is the model.* The legal floor and relaxation are pure functions: factual, safety-critical, and unit-tested without an API key (`agents/test_matching.py`). The single LLM call is the weighted ranking, the one genuinely probabilistic step.
+
+*Relaxation is minimal, not greedy.* It finds the smallest set of firm constraints to drop, breaking ties by lowest cost, so a patient whose only blocker is a rare language doesn't also lose their scheduling preference.
+
+*The preference profile is stored state, not re-extracted.* A real profile is accumulated and refined over time. The matcher reads it; an LLM refinement step (a new signal re-weighting the profile) is documented in the architecture as the next beat, not run in v1.
 
 ---
 
@@ -147,6 +192,9 @@ Set them in `.env` or your shell to override.
 ```
 ├── agents/
 │   ├── care_coordination_agent.py   # Care coordination + Transition Coordinator
+│   ├── care_matching_agent.py       # Preference-weighted provider matching
+│   ├── clinic_data.py               # Shared data loaders + provider-type mapping
+│   ├── test_matching.py             # Keyless tests for the eligibility filter
 │   └── output/                      # Care plans + patient intros per run
 ├── mock-data/
 │   ├── generate.py                  # Seeded synthetic data generator (source of truth)
