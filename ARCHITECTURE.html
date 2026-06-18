@@ -150,6 +150,7 @@
 <nav>
   <a href="#overview">Overview</a>
   <a href="#care-coordination">Care Coordination Agent</a>
+  <a href="#care-matching">Care Matching Agent</a>
   <a href="#data-boundaries">Data Boundaries</a>
   <a href="#planned">Planned Agents</a>
   <a href="#validator">Validator Pattern</a>
@@ -165,15 +166,17 @@
 flowchart LR
   subgraph agents["Agent Layer"]
     B["🏥 Care Coordination Agent\nTC orchestrates · Planner selects team\nValidator guards · Intro drafter writes"]
+    M["🧭 Care Matching Agent\nDeterministic eligibility + relaxation\nSonnet weighted ranking"]
     C["[Planned]\nInsurance · Follow-up\nSMS · Pathway Variants"]
   end
   subgraph data["Data Layer  (mock-data/)"]
-    D[(providers.json\n14 providers)]
-    E[(patients.json\ncare_stage · pregnancy_week)]
+    D[(providers.json\n80 providers · gender · dayparts)]
+    E[(patients.json\ncare_stage · preference_profile)]
     F[(care-pathways.json\nstandard + variant schemas)]
     G[(schedules.json\ncomms-queue.json)]
   end
   B --> D & E & F
+  M --> D & E
   style C fill:#FFF8E7,stroke:#F0C040,color:#8a6000
     </div>
   </div>
@@ -272,6 +275,65 @@ flowchart TD
     <tr><td>Mental Health Risk</td><td>Clinician-flagged at intake</td><td>Psychiatrist introduced in T1 (<code>who_flagged_need: clinician_flagged_need</code>)</td></tr>
     <tr><td>High-Risk OB</td><td>Advanced maternal age, multiples, or pre-existing conditions</td><td>Maternal-fetal medicine (MFM) specialist</td></tr>
   </table>
+</section>
+
+<!-- CARE MATCHING AGENT -->
+<section id="care-matching">
+  <h2>The Care Matching Agent <code style="font-size:13px;color:var(--mid)">care_matching_agent.py</code></h2>
+  <p>
+    Ranks the clinic's eligible providers for a patient by that patient's <em>weighted</em> preferences,
+    producing a recommendation and rationale for a human coordinator. Weights derive from the individual
+    patient's own signals, never from demographic assumptions: explicit intake asks weigh highest,
+    inferred behavioral signals weigh weakly and never override an explicit one.
+  </p>
+
+  <div class="diagram-card">
+    <div class="mermaid">
+flowchart TD
+  PT["👤 Patient + preference_profile\nDenise · CA · postpartum"]
+  EF["🔎 Eligibility Filter\ndeterministic\nLegal floor + firm constraints"]
+  RX["♻️ Progressive Relaxation\ndeterministic\nDrop the minimum firm constraints"]
+  MM["🧠 Matcher\nSonnet 4.6\nWeighted per-role ranking + rationale"]
+  ESC["⛔ Staff Queue\nNo legal floor → expand network"]
+  OUT["💾 Ranked recommendation\nper-provider rationale"]
+
+  PT --> EF
+  EF -->|"eligible"| MM
+  EF -->|"0 results, floor exists"| RX
+  RX -->|"near-matches · tagged"| MM
+  EF -->|"no legal floor"| ESC
+  MM --> OUT
+
+  style EF fill:#F4F6F8,stroke:#9EA8B3,stroke-dasharray:5
+  style RX fill:#F4F6F8,stroke:#9EA8B3,stroke-dasharray:5
+  style MM fill:#E8F4F2,stroke:#2E9E8F
+  style PT fill:#EAF0F8,stroke:#1A5F7A
+  style ESC fill:#FDE8E8,stroke:#C0392B
+    </div>
+  </div>
+
+  <h3>Two-Layer Eligibility</h3>
+  <table>
+    <tr><th>Layer</th><th>Constraints</th><th>On zero results</th></tr>
+    <tr>
+      <td><strong>Legal floor</strong> (never relaxed)</td>
+      <td>State license, <code>accepting_new_patients</code></td>
+      <td class="no">Escalate, expand network or staff queue. Relaxing a license would recommend a provider who cannot legally treat the patient.</td>
+    </tr>
+    <tr>
+      <td><strong>Firm constraints</strong> (relaxable)</td>
+      <td>Language, scheduling daypart, gender, modality</td>
+      <td class="yes">Drop the <em>minimum</em> set (smallest, least costly) needed to surface near-matches; tag exactly what was relaxed.</td>
+    </tr>
+  </table>
+
+  <div class="principle-box" style="margin-top:20px">
+    <strong>The floor is code, the ranking is the model.</strong> The eligibility floor and relaxation are
+    pure functions, factual and safety-critical, so they are unit-tested without an API key
+    (<code>test_matching.py</code>). The single LLM call is the weighted ranking, the one genuinely
+    probabilistic step. The <code>preference_profile</code> is stored, refined state; an LLM refinement step
+    (a new signal re-weighting the profile) is the documented next beat, not run in v1.
+  </div>
 </section>
 
 <!-- DATA BOUNDARIES -->

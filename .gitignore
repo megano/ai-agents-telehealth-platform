@@ -18,6 +18,7 @@ agents/output/final_prd.md
 agents/output/review_log.json
 agents/output/care_plan_*.json
 agents/output/care_intro_*.txt
+agents/output/match_*.json
 agents/output/blocked_*.json
 
 # Prototype agents: under evaluation for inclusion

@@ -1,17 +1,6 @@
 {
   "sms_queue": [
     {
-      "id": "sms_001",
-      "patient_id": "pat_001",
-      "appointment_id": "appt_001",
-      "type": "reminder_24h",
-      "status": "delivered",
-      "sent_at": "2026-05-19T10:00:00Z",
-      "message": "Hi Amara! Reminder: you have a virtual appointment with Dr. Priya Sharma tomorrow, May 20 at 10:00 AM ET. Reply CONFIRM to confirm, CANCEL to cancel, or RESCHEDULE to request a new time.",
-      "patient_reply": "CONFIRM",
-      "reply_received_at": "2026-05-19T10:14:22Z"
-    },
-    {
       "id": "sms_002",
       "patient_id": "pat_004",
       "appointment_id": "appt_004",
@@ -49,7 +38,10 @@
       "body_preview": "Hi Denise, thank you for meeting with Dr. Janet Kim today. Here's a quick summary of what we covered and your next steps...",
       "ai_generated": true,
       "includes_next_steps": true,
-      "includes_resources": ["Postpartum Support International", "Sleep hygiene guide"],
+      "includes_resources": [
+        "Postpartum Support International",
+        "Sleep hygiene guide"
+      ],
       "language": "English"
     },
     {
@@ -66,21 +58,6 @@
       "ai_generated": true,
       "open_rate": null,
       "language": "English"
-    },
-    {
-      "id": "email_003",
-      "patient_id": "pat_005",
-      "appointment_id": null,
-      "type": "waitlist_notification",
-      "status": "pending",
-      "generated_at": null,
-      "reviewed_by": null,
-      "sent_at": null,
-      "subject": "Update on your Astralace appointment request",
-      "body_preview": "Hola Carmen, gracias por su paciencia. Estamos buscando el especialista más adecuado para usted...",
-      "ai_generated": false,
-      "language": "Spanish",
-      "note": "Waiting on AI matching to resolve prov_005 capacity issue before sending."
     }
   ]
 }

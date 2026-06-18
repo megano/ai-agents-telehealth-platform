@@ -12,12 +12,9 @@
       { "id": "hub_la",  "city": "Los Angeles", "state": "CA", "address": "8721 Santa Monica Blvd, Suite 200" }
     ],
     "product_areas": [
-      "Fertility & Family Planning",
       "Pregnancy & Prenatal Care",
       "Postpartum & Fourth Trimester",
-      "Pediatric Care",
       "Mental & Behavioral Health",
-      "Menopause & Midlife",
       "General Women's Wellness"
     ],
     "insurance_accepted": ["Aetna", "Cigna", "Blue Cross Blue Shield", "UnitedHealth", "Humana", "Self-pay"],
