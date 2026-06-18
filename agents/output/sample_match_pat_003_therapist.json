@@ -1,0 +1,28 @@
+{
+  "patient_id": "pat_003",
+  "patient_name": "Denise Park",
+  "care_stage": "postpartum",
+  "roles": [
+    {
+      "role": "therapist",
+      "eligible_count": 2,
+      "escalate": false,
+      "relaxed": [],
+      "note": "",
+      "ranked": [
+        {
+          "provider_id": "prov_003",
+          "rank": 1,
+          "score": 0.97,
+          "rationale": "Perfectly satisfies all four weighted preferences: female gender (0.9 explicit), virtual available (0.7 explicit), evening availability (0.6 explicit), and offers CBT (0.5 inferred) \u2014 a clean sweep with no compromises."
+        },
+        {
+          "provider_id": "prov_1068",
+          "rank": 2,
+          "score": 0.62,
+          "rationale": "Matches the two highest-weight explicit preferences \u2014 female gender (0.9) and virtual modality (0.7) \u2014 but misses evening scheduling (0.6 explicit) with only morning/afternoon slots, and does not offer CBT (0.5 inferred), resulting in meaningful compromise on both remaining preferences."
+        }
+      ]
+    }
+  ]
+}

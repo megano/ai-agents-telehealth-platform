@@ -18,6 +18,7 @@ This repo is a portfolio demo that uses a fictional Maven-style women's teleheal
 
 - **Proactive care coordination**: event-driven agents that plan ahead, not triage after
 - **Preference-weighted matching**: per-patient weighted provider ranking over a deterministic eligibility floor
+- **Risk-stratified triage**: shared classifier feeding a deterministic escalation guard and an isolated refill router
 - **Multi-agent system design**: LangGraph orchestration, structured outputs, validator-as-safety-critic
 - **Product thinking**: care pathway design, clinical workflow constraints, data modeling
 
@@ -113,6 +114,45 @@ python agents/care_matching_agent.py --patient pat_021 --role pelvic_floor_pt --
 
 ---
 
+## The Patient-Message Triage Agent [`agents/triage_agent.py`]
+
+One triage pass over the inbound message inbox, two risk-stratified outputs. The same per-message classification feeds both jobs, so each message is read once; the two downstream handlers are separate so the higher-risk refill logic is bounded and can be toggled off without touching the prioritizer.
+
+```mermaid
+flowchart TD
+  IN["📥 Inbound inbox\n16 synthetic messages"] --> CL["🧠 Shared Classifier\nSonnet · acuity + category (one pass)"]
+  CL --> EG["🛡 Escalation Guard\ndeterministic · red-flags force top, never downgrade"]
+  EG -->|"red flag"| SQ["⛔ Staff Queue\nclinical review required"]
+  EG -->|"refill"| RG["💊 Refill Guard\ndeterministic · isolated module"]
+  EG -->|"other"| MD["📋 MD Worklist\nacuity-sorted"]
+  RG -->|"clean protocol refill"| RN["🩺 RN Queue"]
+  RG -->|"dose change / new med / off-protocol / no visit"| MD
+
+  style EG stroke-dasharray:5
+  style RG stroke-dasharray:5
+  style SQ fill:#fdecea,stroke:#c0392b
+```
+
+**Job 1, inbox prioritizer:** score each message by acuity and emit a worklist, most acute first. **Job 2, refill router:** a straight protocol refill goes to the RN queue; anything needing prescriber judgment stays with the MD, flagged why.
+
+```bash
+# Full LLM triage of the inbox
+python agents/triage_agent.py
+
+# Deterministic guards only (escalation + refill routing), no API key
+python agents/triage_agent.py --no-llm
+```
+
+**Design decisions worth noting:**
+
+*The escalation guard runs on raw text, after the model, and can only escalate.* A red-flag pattern (self-harm, hemorrhage, decreased fetal movement, preeclampsia signs, cardiopulmonary) forces top priority and "clinical review required". The model cannot downgrade it. In the demo, a self-harm disclosure buried inside a routine reschedule still floats to the top.
+
+*Refill routing is isolated and conservative.* The refill guard lives in its own module (`refill_guard.py`) with its own audit and a default-off autonomy ceiling. A dose change, a new medication, an off-protocol drug, or no qualifying recent visit all keep the message with the prescriber. RN routing is worklist placement only; the guard never fills or authorizes. (Production would gate renewal authorization behind prescriber sign-off; the demo models that as a configurable protocol list, not a legal claim.)
+
+*Both guards are deterministic and keyless-tested* (`test_triage.py`): the escalation guard against every seeded red flag, the refill router against every standing-order rule.
+
+---
+
 ## Care Pathway Design
 
 The standard maternity pathway spans four stages. Each intervention has an `evidence_level` (`established` or `emerging`): the pathway combines clinical standards with proactive interventions designed to prevent problems rather than respond to them.
@@ -138,6 +178,7 @@ All data is synthetic. Located in `mock-data/`:
 | `providers.json` | 80 synthetic providers across perinatal specialties: OB-GYN, therapist, lactation consultant (LC), pelvic floor PT, dietitian, midwife, psychiatrist, pediatrician, coaches. Each has `gender`, `licensed_states`, languages, `availability_dayparts`, and insurance. |
 | `patients.json` | 300 synthetic patients across the maternity journey (prenatal through postpartum), with `care_stage`, `pregnancy_week`, and a weighted `preference_profile`. Three curated anchors + scenario fixtures + seeded bulk. |
 | `care-pathways.json` | Standard maternity pathway (4 stages, 20+ interventions) + future variant schemas. |
+| `messages.json` | 16 synthetic inbound patient messages for the triage agent, with ground-truth labels for the guard eval, plus the RN standing-order protocol list. |
 | `schedules.json` | Provider availability and booked slots. |
 | `clinic.json` | Clinic metadata: hubs, product areas, policies. |
 
@@ -154,8 +195,8 @@ All data is synthetic. Located in `mock-data/`:
 | | |
 |--|--|
 | **Orchestration** | LangGraph: StateGraph, conditional routing, persistent TC state |
-| **Models** | `claude-sonnet-4-6` (planner / drafter). Validator is deterministic code, no model. |
-| **Structured outputs** | Pydantic: `CarePlanRecommendation`, `RecommendedProvider`, `ValidationResult` |
+| **Models** | `claude-sonnet-4-6` (planner, drafter, provider matcher, triage classifier). Where facts suffice there is no model: the validator and both triage guards are deterministic code. |
+| **Structured outputs** | Pydantic typed outputs across agents (`CarePlanRecommendation`, the matcher `Ranking`, the triage `InboxClass`, `ValidationResult`) |
 | **LLM client** | langchain-anthropic: `.with_structured_output()` for typed model responses |
 | **Runtime** | Python 3.11+ |
 
@@ -182,8 +223,10 @@ variables, so you can run the demo on whatever you have access to:
 |----------|---------|------|
 | `PLANNER_MODEL` | `claude-sonnet-4-6` | Care Team Planner |
 | `DRAFTER_MODEL` | `claude-sonnet-4-6` | Patient Intro Drafter |
+| `MATCHER_MODEL` | `claude-sonnet-4-6` | Provider Matcher (weighted ranking) |
+| `CLASSIFIER_MODEL` | `claude-sonnet-4-6` | Message Triage Classifier |
 
-Set them in `.env` or your shell to override.
+Set them in `.env` or your shell to override. The refill router's autonomy ceiling is a separate config knob, `REFILL_AUTONOMY` (default `L1`: auto-route a clean protocol refill to the RN queue; a human always authorizes).
 
 ---
 
@@ -193,14 +236,18 @@ Set them in `.env` or your shell to override.
 ├── agents/
 │   ├── care_coordination_agent.py   # Care coordination + Transition Coordinator
 │   ├── care_matching_agent.py       # Preference-weighted provider matching
+│   ├── triage_agent.py              # Inbox prioritizer + refill router
+│   ├── refill_guard.py              # Isolated, deterministic refill-safety guard
 │   ├── clinic_data.py               # Shared data loaders + provider-type mapping
 │   ├── test_matching.py             # Keyless tests for the eligibility filter
+│   ├── test_triage.py               # Keyless tests for the triage guards
 │   └── output/                      # Care plans + patient intros per run
 ├── mock-data/
 │   ├── generate.py                  # Seeded synthetic data generator (source of truth)
 │   ├── providers.json               # 80 providers with licensed_states, gender, dayparts
 │   ├── patients.json                # 300 patients with care_stage + preference_profile
 │   ├── care-pathways.json           # Standard maternity pathway + variant schemas
+│   ├── messages.json                # Inbound messages for triage + RN protocol list
 │   ├── schedules.json
 │   └── clinic.json
 └── ARCHITECTURE.html                # Rendered architecture diagrams (open in browser)

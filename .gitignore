@@ -20,6 +20,7 @@ agents/output/care_plan_*.json
 agents/output/care_intro_*.txt
 agents/output/match_*.json
 agents/output/blocked_*.json
+agents/output/triage_inbox.json
 
 # Prototype agents: under evaluation for inclusion
 agents/scheduling_agent.py
