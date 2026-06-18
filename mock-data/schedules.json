@@ -1,21 +1,6 @@
 {
   "appointments": [
     {
-      "id": "appt_001",
-      "patient_id": "pat_001",
-      "provider_id": "prov_001",
-      "type": "IUI Cycle Review",
-      "product_area": "Fertility & Family Planning",
-      "date": "2026-05-20",
-      "time": "10:00",
-      "duration_min": 45,
-      "modality": "virtual",
-      "status": "confirmed",
-      "reminders_sent": ["72h", "24h"],
-      "patient_confirmed": true,
-      "notes": "Review IUI cycle #2 results. Discuss IVF pathway if needed."
-    },
-    {
       "id": "appt_002",
       "patient_id": "pat_002",
       "provider_id": "prov_002",
@@ -27,7 +12,9 @@
       "modality": "in-person",
       "hub": "hub_atx",
       "status": "confirmed",
-      "reminders_sent": ["72h"],
+      "reminders_sent": [
+        "72h"
+      ],
       "patient_confirmed": true,
       "notes": "Review anatomy scan images. Discuss birth plan initiation."
     },
@@ -42,7 +29,11 @@
       "duration_min": 50,
       "modality": "virtual",
       "status": "confirmed",
-      "reminders_sent": ["72h", "24h", "2h"],
+      "reminders_sent": [
+        "72h",
+        "24h",
+        "2h"
+      ],
       "patient_confirmed": true,
       "notes": "Session 6. Reassess Edinburgh score. Explore return-to-work anxiety."
     },
@@ -57,73 +48,14 @@
       "duration_min": 45,
       "modality": "virtual",
       "status": "pending_confirmation",
-      "reminders_sent": ["72h"],
+      "reminders_sent": [
+        "72h"
+      ],
       "patient_confirmed": false,
       "notes": "SMS reminder sent. No confirmation received. Follow-up call needed. Patient opted out of SMS."
-    },
-    {
-      "id": "appt_005",
-      "patient_id": "pat_006",
-      "provider_id": "prov_007",
-      "type": "Therapy Session, Anxiety",
-      "product_area": "Mental & Behavioral Health",
-      "date": "2026-05-21",
-      "time": "17:00",
-      "duration_min": 50,
-      "modality": "virtual",
-      "status": "confirmed",
-      "reminders_sent": ["72h", "24h"],
-      "patient_confirmed": true,
-      "notes": "Session 8. Discuss coping toolkit progress. Evaluate step-down to biweekly."
-    },
-    {
-      "id": "appt_006",
-      "patient_id": "pat_007",
-      "provider_id": "prov_004",
-      "type": "2-Month Well-Baby Visit",
-      "product_area": "Pediatric Care",
-      "date": "2026-05-15",
-      "time": "10:30",
-      "duration_min": 30,
-      "modality": "virtual",
-      "status": "confirmed",
-      "reminders_sent": ["72h", "24h"],
-      "patient_confirmed": true,
-      "notes": "Growth check, vaccine discussion (DTaP, Hib, PCV). Developmental milestone review."
-    },
-    {
-      "id": "appt_007",
-      "patient_id": "pat_005",
-      "provider_id": null,
-      "type": "Menopause Initial Consult",
-      "product_area": "Menopause & Midlife",
-      "date": null,
-      "time": null,
-      "duration_min": 45,
-      "modality": "virtual",
-      "status": "unscheduled",
-      "reminders_sent": [],
-      "patient_confirmed": false,
-      "notes": "Patient on waitlist. Needs Spanish-speaking menopause specialist. prov_005 full. AI matching needed for alternative provider.",
-      "ai_matching_flag": true,
-      "matching_criteria": {
-        "language": "Spanish",
-        "specialty": "Menopause & Midlife",
-        "insurance": "Humana",
-        "modality": "virtual"
-      }
     }
   ],
   "provider_availability_snapshot": {
-    "date": "2026-05-14",
-    "slots": [
-      { "provider_id": "prov_001", "date": "2026-05-20", "open_slots": ["10:00", "11:00", "14:00"] },
-      { "provider_id": "prov_002", "date": "2026-05-21", "open_slots": ["09:00", "10:00", "15:00"] },
-      { "provider_id": "prov_003", "date": "2026-05-16", "open_slots": ["11:00", "13:00", "15:00"] },
-      { "provider_id": "prov_004", "date": "2026-05-15", "open_slots": ["10:30", "13:00", "15:00"] },
-      { "provider_id": "prov_005", "date": "2026-05-20", "open_slots": [] },
-      { "provider_id": "prov_006", "date": "2026-05-20", "open_slots": ["09:00", "10:00", "11:00", "14:00"] },
-      { "provider_id": "prov_007", "date": "2026-05-21", "open_slots": ["17:00", "18:00"] }
-    ]
+    "date": "2026-05-14"
   }
 }
