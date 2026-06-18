@@ -1,287 +1,3498 @@
 {
   "providers": [
     {
-      "id": "prov_001",
-      "name": "Dr. Priya Sharma",
-      "credentials": "MD, FACOG",
-      "specialty": "Fertility & Reproductive Endocrinology",
-      "product_areas": ["Fertility & Family Planning", "General Women's Wellness"],
-      "hub": "hub_nyc",
-      "virtual_available": true,
-      "licensed_states": ["NY", "NJ", "CT", "FL"],
-      "languages": ["English", "Hindi"],
-      "bio": "Board-certified reproductive endocrinologist with 12 years specializing in IUI, IVF, and PCOS management.",
-      "availability": {
-        "timezone": "America/New_York",
-        "weekly_slots": ["Mon 9-12", "Tue 9-17", "Thu 9-17", "Fri 9-13"]
-      },
-      "avg_rating": 4.9,
-      "total_reviews": 312,
-      "insurance": ["Aetna", "Cigna", "Blue Cross Blue Shield"],
-      "accepting_new_patients": true
-    },
-    {
       "id": "prov_002",
       "name": "Dr. Maria Gonzalez",
       "credentials": "MD, MPH",
       "specialty": "Obstetrics & Prenatal Care",
-      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester"],
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
       "hub": "hub_atx",
       "virtual_available": true,
-      "licensed_states": ["TX", "CO", "FL", "NM"],
-      "languages": ["English", "Spanish"],
-      "bio": "OB-GYN with 9 years focused on high-risk pregnancy, prenatal nutrition, and postpartum mental health integration.",
+      "licensed_states": [
+        "TX",
+        "CO",
+        "FL",
+        "NM"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
       "availability": {
         "timezone": "America/Chicago",
-        "weekly_slots": ["Mon 8-16", "Wed 8-16", "Thu 8-16"]
+        "weekly_slots": [
+          "Mon 8-16",
+          "Wed 8-16",
+          "Thu 8-16"
+        ]
       },
       "avg_rating": 4.8,
       "total_reviews": 198,
-      "insurance": ["Aetna", "UnitedHealth", "Humana", "Self-pay"],
+      "insurance": [
+        "Aetna",
+        "UnitedHealth",
+        "Humana",
+        "Self-pay"
+      ],
       "accepting_new_patients": true
     },
     {
       "id": "prov_003",
       "name": "Dr. Janet Kim",
       "credentials": "PsyD, PMH-C",
-      "specialty": "Perinatal Mental Health",
-      "product_areas": ["Mental & Behavioral Health", "Postpartum & Fourth Trimester", "Pregnancy & Prenatal Care"],
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
       "hub": "hub_la",
       "virtual_available": true,
-      "licensed_states": ["CA", "WA", "OR", "NV"],
-      "languages": ["English", "Mandarin"],
-      "bio": "Perinatal mental health certified psychologist specializing in postpartum depression, anxiety, and birth trauma.",
+      "licensed_states": [
+        "CA",
+        "WA",
+        "OR",
+        "NV"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
       "availability": {
         "timezone": "America/Los_Angeles",
-        "weekly_slots": ["Tue 10-18", "Wed 10-18", "Fri 10-15"]
+        "weekly_slots": [
+          "Tue 10-18",
+          "Wed 10-18",
+          "Fri 10-15"
+        ]
       },
       "avg_rating": 4.9,
       "total_reviews": 441,
-      "insurance": ["Cigna", "Blue Cross Blue Shield", "Self-pay"],
-      "accepting_new_patients": true
+      "insurance": [
+        "Cigna",
+        "Blue Cross Blue Shield",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "CBT",
+        "EMDR",
+        "IFS"
+      ]
     },
     {
       "id": "prov_004",
       "name": "Lauren Chen, IBCLC",
       "credentials": "RN, IBCLC",
       "specialty": "Lactation & Infant Feeding",
-      "product_areas": ["Postpartum & Fourth Trimester", "Pediatric Care"],
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
       "hub": "hub_nyc",
       "virtual_available": true,
-      "licensed_states": ["NY", "NJ", "CT", "TX"],
-      "languages": ["English", "Mandarin"],
-      "bio": "International Board Certified Lactation Consultant with 7 years helping new parents navigate breastfeeding challenges.",
+      "licensed_states": [
+        "NY",
+        "NJ",
+        "CT",
+        "TX"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
       "availability": {
         "timezone": "America/New_York",
-        "weekly_slots": ["Mon 10-17", "Tue 10-17", "Thu 10-17", "Sat 9-13"]
+        "weekly_slots": [
+          "Mon 10-17",
+          "Tue 10-17",
+          "Thu 10-17",
+          "Sat 9-13"
+        ]
       },
       "avg_rating": 4.7,
       "total_reviews": 276,
-      "insurance": ["Aetna", "Cigna", "Self-pay"],
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Self-pay"
+      ],
       "accepting_new_patients": true
     },
     {
-      "id": "prov_005",
-      "name": "Dr. Alicia Torres",
-      "credentials": "MD, NCMP",
-      "specialty": "Menopause & Midlife Women's Health",
-      "product_areas": ["Menopause & Midlife", "General Women's Wellness"],
+      "id": "prov_1000",
+      "name": "Dr. Sofia Kim",
+      "credentials": "MD",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": [
+        "NY",
+        "AZ",
+        "CA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 67,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1001",
+      "name": "Dr. Sofia Lopez",
+      "credentials": "DO",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "WA",
+        "CO",
+        "NY",
+        "FL",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 5.0,
+      "total_reviews": 427,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1002",
+      "name": "Dr. Ingrid Moore",
+      "credentials": "MD",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
       "hub": "hub_atx",
       "virtual_available": true,
-      "licensed_states": ["TX", "CO"],
-      "languages": ["English", "Spanish"],
-      "bio": "NAMS Certified Menopause Practitioner focused on HRT, bone health, and sexual wellness for women 40+.",
+      "licensed_states": [
+        "OR",
+        "NV"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
       "availability": {
         "timezone": "America/Chicago",
-        "weekly_slots": ["Mon 9-15", "Wed 9-15", "Fri 9-13"]
+        "weekly_slots": [
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 403,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1003",
+      "name": "Dr. Rebecca Vasquez",
+      "credentials": "DO",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NJ",
+        "AZ",
+        "FL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 450,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1004",
+      "name": "Dr. Naomi Torres",
+      "credentials": "MD",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": [
+        "CT",
+        "FL",
+        "AZ",
+        "NJ"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 88,
+      "insurance": [
+        "Cigna",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1005",
+      "name": "Dr. Rebecca Morrison",
+      "credentials": "MD, MPH",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "GA",
+        "CO",
+        "MA",
+        "TX",
+        "NV"
+      ],
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 309,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1006",
+      "name": "Dr. Wren Okafor",
+      "credentials": "MD",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "NY",
+        "NJ",
+        "MA"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 12-17",
+          "Tue 12-17",
+          "Wed 12-17",
+          "Thu 12-17"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 537,
+      "insurance": [
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1007",
+      "name": "Dr. Camila Lopez",
+      "credentials": "PsyD",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "NJ",
+        "GA",
+        "AZ",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 275,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "CBT",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1008",
+      "name": "David Gonzalez, LPC",
+      "credentials": "LPC, NCC",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NY",
+        "OR",
+        "FL",
+        "NJ"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-12",
+          "Tue 8-12",
+          "Wed 8-12",
+          "Thu 8-12"
+        ]
       },
       "avg_rating": 4.8,
-      "total_reviews": 187,
-      "insurance": ["Blue Cross Blue Shield", "UnitedHealth", "Humana"],
+      "total_reviews": 402,
+      "insurance": [
+        "Aetna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "CBT",
+        "DBT",
+        "IFS",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1009",
+      "name": "Amara Reyes, LPC",
+      "credentials": "LPC, NCC",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "OR",
+        "NY"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 5.0,
+      "total_reviews": 282,
+      "insurance": [
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "CBT",
+        "DBT",
+        "EMDR"
+      ]
+    },
+    {
+      "id": "prov_1010",
+      "name": "Hana Kim, LMFT",
+      "credentials": "LMFT",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "AZ",
+        "IL",
+        "NJ"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 528,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "ACT",
+        "CBT"
+      ]
+    },
+    {
+      "id": "prov_1011",
+      "name": "Nadia Morrison, LCSW",
+      "credentials": "LCSW, PMH-C",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CT",
+        "MA",
+        "TX"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 347,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "CBT",
+        "EMDR",
+        "IFS",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1012",
+      "name": "Ingrid Hill, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "NY",
+        "OR",
+        "NJ"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 177,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1013",
+      "name": "Simone Brooks, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "OR",
+        "CO",
+        "TX"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 154,
+      "insurance": [
+        "Cigna",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1014",
+      "name": "Dr. Caleb Sharma",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": "hub_atx",
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "CO",
+        "WA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 12-17",
+          "Tue 12-17",
+          "Fri 12-17"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 456,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Humana",
+        "Self-pay"
+      ],
       "accepting_new_patients": false
     },
     {
-      "id": "prov_006",
-      "name": "Dr. Rachel Moore",
+      "id": "prov_1015",
+      "name": "Dr. Liam Nguyen",
       "credentials": "MD, FAAP",
       "specialty": "Pediatrics & Newborn Care",
-      "product_areas": ["Pediatric Care", "Postpartum & Fourth Trimester"],
-      "hub": "hub_la",
-      "virtual_available": true,
-      "licensed_states": ["CA", "WA", "NV"],
-      "languages": ["English"],
-      "bio": "Board-certified pediatrician focused on newborn development, vaccine schedules, and developmental milestones.",
-      "availability": {
-        "timezone": "America/Los_Angeles",
-        "weekly_slots": ["Mon 8-16", "Tue 8-16", "Thu 8-16", "Fri 8-12"]
-      },
-      "avg_rating": 4.6,
-      "total_reviews": 154,
-      "insurance": ["Aetna", "Cigna", "UnitedHealth", "Humana"],
-      "accepting_new_patients": true
-    },
-    {
-      "id": "prov_007",
-      "name": "Sofia Reyes, LCSW",
-      "credentials": "LCSW, PMH-C",
-      "specialty": "Women's Mental Health & Therapy",
-      "product_areas": ["Mental & Behavioral Health", "General Women's Wellness"],
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
       "hub": null,
       "virtual_available": true,
-      "licensed_states": ["TX", "CA", "FL", "CO", "NM"],
-      "languages": ["English", "Spanish"],
-      "bio": "Licensed clinical social worker specializing in anxiety, depression, life transitions, and maternal mental health.",
-      "availability": {
-        "timezone": "America/Chicago",
-        "weekly_slots": ["Mon 12-20", "Wed 12-20", "Thu 12-20", "Sat 10-15"]
-      },
-      "avg_rating": 4.9,
-      "total_reviews": 522,
-      "insurance": ["Cigna", "Blue Cross Blue Shield", "Self-pay"],
-      "accepting_new_patients": true
-    },
-    {
-      "id": "prov_008",
-      "name": "Dr. Nina Okafor",
-      "credentials": "MD, ABPN",
-      "specialty": "Psychiatry",
-      "product_areas": ["Mental & Behavioral Health", "Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester"],
-      "hub": "hub_nyc",
-      "virtual_available": true,
-      "licensed_states": ["NY", "NJ", "CT"],
-      "languages": ["English"],
-      "bio": "Board-certified psychiatrist specializing in perinatal mood disorders, medication safety in pregnancy, and postpartum care.",
+      "licensed_states": [
+        "CA",
+        "NM",
+        "MA",
+        "NV"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
       "availability": {
         "timezone": "America/New_York",
-        "weekly_slots": ["Tue 9-15", "Wed 9-15", "Fri 9-13"]
-      },
-      "avg_rating": 4.8,
-      "total_reviews": 203,
-      "insurance": ["Aetna", "Cigna", "Blue Cross Blue Shield"],
-      "accepting_new_patients": true
-    },
-    {
-      "id": "prov_009",
-      "name": "Angela Torres, LPC",
-      "credentials": "LPC, NCC",
-      "specialty": "Individual & Couples Therapy",
-      "product_areas": ["Mental & Behavioral Health", "Fertility & Family Planning"],
-      "hub": null,
-      "virtual_available": true,
-      "licensed_states": ["CO", "TX", "CA", "NM"],
-      "languages": ["English", "Spanish"],
-      "bio": "Licensed professional counselor with expertise in infertility grief, relationship stress, and life transitions.",
-      "availability": {
-        "timezone": "America/Denver",
-        "weekly_slots": ["Mon 14-20", "Tue 14-20", "Thu 14-20"]
-      },
-      "avg_rating": 4.7,
-      "total_reviews": 189,
-      "insurance": ["Cigna", "Self-pay"],
-      "accepting_new_patients": true
-    },
-    {
-      "id": "prov_010",
-      "name": "Danielle Brooks, CNM",
-      "credentials": "CNM, MSN",
-      "specialty": "Certified Nurse-Midwife",
-      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "General Women's Wellness"],
-      "hub": "hub_la",
-      "virtual_available": true,
-      "licensed_states": ["CA", "OR", "WA"],
-      "languages": ["English"],
-      "bio": "Certified nurse-midwife with 10 years supporting physiologic birth, home birth preparation, and postpartum recovery.",
-      "availability": {
-        "timezone": "America/Los_Angeles",
-        "weekly_slots": ["Mon 9-17", "Wed 9-17", "Fri 9-15"]
-      },
-      "avg_rating": 4.9,
-      "total_reviews": 334,
-      "insurance": ["Aetna", "UnitedHealth", "Self-pay"],
-      "accepting_new_patients": true
-    },
-    {
-      "id": "prov_011",
-      "name": "Keisha Hammond, RD",
-      "credentials": "RD, CLEC",
-      "specialty": "Prenatal & Postpartum Nutrition",
-      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "Fertility & Family Planning"],
-      "hub": null,
-      "virtual_available": true,
-      "licensed_states": ["NY", "CA", "TX", "FL"],
-      "languages": ["English"],
-      "bio": "Registered dietitian specializing in prenatal nutrition, gestational diabetes (GD), and fertility-supportive eating patterns.",
-      "availability": {
-        "timezone": "America/New_York",
-        "weekly_slots": ["Mon 10-18", "Wed 10-18", "Sat 9-13"]
-      },
-      "avg_rating": 4.6,
-      "total_reviews": 142,
-      "insurance": ["Aetna", "Blue Cross Blue Shield", "Self-pay"],
-      "accepting_new_patients": true
-    },
-    {
-      "id": "prov_012",
-      "name": "Marcus Webb, MS",
-      "credentials": "MS, CHC",
-      "specialty": "Women's Health Coach",
-      "product_areas": ["General Women's Wellness", "Menopause & Midlife", "Mental & Behavioral Health"],
-      "hub": null,
-      "virtual_available": true,
-      "licensed_states": "all",
-      "state_license_required": false,
-      "languages": ["English"],
-      "bio": "Certified health coach focused on stress management, habit change, and midlife wellness for women navigating hormonal transitions.",
-      "availability": {
-        "timezone": "America/Chicago",
-        "weekly_slots": ["Tue 8-18", "Thu 8-18", "Sat 9-14"]
+        "weekly_slots": [
+          "Mon 12-20",
+          "Tue 12-20",
+          "Thu 12-20"
+        ]
       },
       "avg_rating": 4.5,
-      "total_reviews": 98,
-      "insurance": ["Self-pay"],
+      "total_reviews": 511,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana"
+      ],
       "accepting_new_patients": true
     },
     {
-      "id": "prov_013",
-      "name": "Dr. Yemi Adeyemi",
-      "credentials": "PT, DPT, WCS",
-      "specialty": "Pelvic Floor Physical Therapy",
-      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "General Women's Wellness"],
+      "id": "prov_1016",
+      "name": "Dr. Carmen Kim",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
       "hub": null,
       "virtual_available": true,
-      "licensed_states": ["TX", "CA", "CO", "WA"],
-      "state_license_required": true,
-      "languages": ["English"],
-      "bio": "Doctor of Physical Therapy with Women's Clinical Specialist certification. Specializes in prenatal pelvic floor preparation, diastasis recti, and postpartum recovery.",
+      "licensed_states": [
+        "NY",
+        "NV",
+        "NJ",
+        "NM"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
       "availability": {
-        "timezone": "America/Chicago",
-        "weekly_slots": ["Mon 9-17", "Wed 9-17", "Fri 9-15"]
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Wed 8-20",
+          "Fri 8-20"
+        ]
       },
-      "avg_rating": 4.9,
-      "total_reviews": 167,
-      "insurance": ["Aetna", "UnitedHealth", "Cigna", "Self-pay"],
+      "avg_rating": 4.4,
+      "total_reviews": 484,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Self-pay",
+        "UnitedHealth"
+      ],
       "accepting_new_patients": true
     },
     {
-      "id": "prov_014",
-      "name": "Jade Morrison, CPC",
-      "credentials": "CPC, CPCC",
-      "specialty": "Maternity Leave & Return-to-Work Coaching",
-      "product_areas": ["Pregnancy & Prenatal Care", "Postpartum & Fourth Trimester", "General Women's Wellness"],
+      "id": "prov_1017",
+      "name": "Dr. Hana Moore",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_atx",
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "AZ",
+        "NM",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 167,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Humana",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1018",
+      "name": "Dr. Leah Hammond",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "NV",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-12",
+          "Tue 8-12",
+          "Wed 8-12",
+          "Thu 8-12",
+          "Fri 8-12"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 369,
+      "insurance": [
+        "Cigna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1019",
+      "name": "Dr. Ruth Lopez",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "NV",
+        "IL",
+        "CT"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 526,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1020",
+      "name": "Dr. Hana Chen",
+      "credentials": "PT, DPT",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "NV",
+        "AZ"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Thu 8-17"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 164,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1021",
+      "name": "Dr. Caleb Adeyemi",
+      "credentials": "PT, DPT",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NY",
+        "IL",
+        "OR"
+      ],
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Phoenix",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 280,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1022",
+      "name": "Dr. Simone Sharma",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 400,
+      "insurance": [
+        "Cigna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1023",
+      "name": "Dr. Fatima Nguyen",
+      "credentials": "PT, DPT",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "MA",
+        "GA",
+        "NM"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 178,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1024",
+      "name": "Carmen Brooks, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "IL",
+        "NM",
+        "CO"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 5.0,
+      "total_reviews": 244,
+      "insurance": [
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1025",
+      "name": "Amara Moore, RD",
+      "credentials": "RD, CLEC",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "CO",
+        "GA",
+        "WA",
+        "NY"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
+      "availability": {
+        "timezone": "America/Phoenix",
+        "weekly_slots": [
+          "Mon 8-12",
+          "Wed 8-12",
+          "Fri 8-12"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 359,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Humana",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1026",
+      "name": "Naomi Reyes, RD",
+      "credentials": "RD, CLEC",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NY",
+        "NV",
+        "CT",
+        "CA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 541,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1027",
+      "name": "Simone Sharma, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "NJ",
+        "NV"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Phoenix",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 128,
+      "insurance": [
+        "Cigna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1028",
+      "name": "Carmen Nguyen, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "OR",
+        "FL",
+        "WA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 456,
+      "insurance": [
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1029",
+      "name": "Rebecca Patel, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "AZ",
+        "FL",
+        "CO",
+        "NV",
+        "CT"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Phoenix",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 276,
+      "insurance": [
+        "Cigna",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1030",
+      "name": "Dr. Andre Okafor",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "AZ",
+        "CT",
+        "NJ",
+        "GA"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 5.0,
+      "total_reviews": 339,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1031",
+      "name": "Maya Park, IBCLC",
+      "credentials": "IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "IL",
+        "MA",
+        "NM",
+        "OR"
+      ],
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 271,
+      "insurance": [
+        "Cigna",
+        "Humana",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1032",
+      "name": "Wren Park, MS",
+      "credentials": "MS, CHC",
+      "specialty": "Perinatal Health Coach",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
       "hub": null,
       "virtual_available": true,
       "licensed_states": "all",
-      "state_license_required": false,
-      "languages": ["English"],
-      "bio": "Certified professional coach specializing in maternity leave planning, manager conversations, and return-to-work transitions. Helps patients design leave handoffs, negotiate accommodations, and manage re-entry anxiety.",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 12-20",
+          "Thu 12-20",
+          "Fri 12-20"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 501,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "state_license_required": false
+    },
+    {
+      "id": "prov_1033",
+      "name": "Dr. Yuki Hill",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "GA",
+        "MA",
+        "NV",
+        "CT"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
       "availability": {
         "timezone": "America/New_York",
-        "weekly_slots": ["Mon 10-18", "Tue 10-18", "Thu 10-18", "Fri 10-15"]
+        "weekly_slots": [
+          "Mon 8-12",
+          "Tue 8-12",
+          "Wed 8-12",
+          "Thu 8-12",
+          "Fri 8-12"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 354,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1034",
+      "name": "Dr. Grace Gonzalez",
+      "credentials": "PT, DPT",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "CT",
+        "TX",
+        "NM",
+        "WA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
       },
       "avg_rating": 4.8,
-      "total_reviews": 84,
-      "insurance": ["Self-pay"],
+      "total_reviews": 219,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Humana",
+        "UnitedHealth"
+      ],
       "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1035",
+      "name": "Fatima Hill, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "WA",
+        "IL",
+        "NV"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 158,
+      "insurance": [
+        "Aetna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1036",
+      "name": "Fatima Mbeki, LMFT",
+      "credentials": "LMFT",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "FL",
+        "CO"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-12",
+          "Tue 8-12",
+          "Wed 8-12"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 54,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "EMDR",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1037",
+      "name": "Olivia Tanaka, IBCLC",
+      "credentials": "IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "OR",
+        "MA",
+        "FL",
+        "GA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 559,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1038",
+      "name": "Priya Torres, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "WA",
+        "NJ",
+        "GA",
+        "IL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-12",
+          "Thu 8-12",
+          "Fri 8-12"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 460,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1039",
+      "name": "Daniela Mbeki, CNM",
+      "credentials": "CNM, MSN",
+      "specialty": "Certified Nurse-Midwife",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_atx",
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "NY",
+        "NJ",
+        "CT",
+        "WA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 12-17",
+          "Tue 12-17",
+          "Thu 12-17",
+          "Fri 12-17"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 311,
+      "insurance": [
+        "Aetna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1040",
+      "name": "Dr. Liam Brooks",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CT",
+        "CA"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 69,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1041",
+      "name": "Dr. Olivia Adeyemi",
+      "credentials": "MD, ABPN",
+      "specialty": "Psychiatry (Perinatal)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": [
+        "NY",
+        "CA",
+        "CT"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Tue 12-20",
+          "Wed 12-20",
+          "Thu 12-20"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 301,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1042",
+      "name": "Dr. Theo Mbeki",
+      "credentials": "MD, MPH",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "OR",
+        "IL",
+        "CO",
+        "FL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Tue 17-20",
+          "Wed 17-20",
+          "Thu 17-20",
+          "Fri 17-20"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 445,
+      "insurance": [
+        "Aetna",
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1043",
+      "name": "Dr. Theo Reyes",
+      "credentials": "PT, DPT",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NV",
+        "FL",
+        "CT"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 74,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1044",
+      "name": "Dr. Camila Webb",
+      "credentials": "MD, ABPN",
+      "specialty": "Psychiatry (Perinatal)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "IL",
+        "OR"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 12-17",
+          "Tue 12-17",
+          "Thu 12-17",
+          "Fri 12-17"
+        ]
+      },
+      "avg_rating": 5.0,
+      "total_reviews": 414,
+      "insurance": [
+        "Aetna",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1045",
+      "name": "Dr. Ruth Larsson",
+      "credentials": "MD, MPH",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "NV",
+        "WA",
+        "CA",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 159,
+      "insurance": [
+        "Aetna",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1046",
+      "name": "Camila Sharma, IBCLC",
+      "credentials": "IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "WA",
+        "NV",
+        "AZ",
+        "GA",
+        "NJ"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Tue 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 419,
+      "insurance": [
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1047",
+      "name": "Dr. Daniela Webb",
+      "credentials": "MD, FAAP",
+      "specialty": "Pediatrics & Newborn Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "CO"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 5.0,
+      "total_reviews": 250,
+      "insurance": [
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1048",
+      "name": "Priya Vasquez, CNM",
+      "credentials": "CNM, MSN",
+      "specialty": "Certified Nurse-Midwife",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "NY",
+        "MA",
+        "NJ"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 169,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1049",
+      "name": "Aisha Johnson, IBCLC",
+      "credentials": "IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CT",
+        "TX",
+        "AZ"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-12",
+          "Tue 8-12",
+          "Thu 8-12"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 150,
+      "insurance": [
+        "Aetna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1050",
+      "name": "Dr. Priya Kim",
+      "credentials": "PsyD",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CT",
+        "NJ",
+        "CO",
+        "OR",
+        "IL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 504,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "ACT",
+        "EMDR",
+        "IFS",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1051",
+      "name": "Rebecca Hill, ACC",
+      "credentials": "ACC",
+      "specialty": "Maternity Leave & Return-to-Work Coaching",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": "all",
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 92,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true,
+      "state_license_required": false
+    },
+    {
+      "id": "prov_1052",
+      "name": "Fatima Reyes, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "NJ",
+        "WA",
+        "CA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 356,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1053",
+      "name": "Priya Mbeki, RD",
+      "credentials": "RD, CLEC",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "AZ",
+        "NJ"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Phoenix",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 90,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1054",
+      "name": "Elena Gonzalez, RD",
+      "credentials": "RD, CLEC",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "CA",
+        "CO",
+        "NV"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 301,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1055",
+      "name": "Dr. Camila Tanaka",
+      "credentials": "MD, ABPN",
+      "specialty": "Psychiatry (Perinatal)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "NM",
+        "AZ",
+        "TX"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 454,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1056",
+      "name": "Ingrid Hill, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "FL",
+        "NM"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 156,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1057",
+      "name": "Nadia Johnson, CNM",
+      "credentials": "CNM, MSN",
+      "specialty": "Certified Nurse-Midwife",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "FL",
+        "NY",
+        "CT",
+        "IL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 363,
+      "insurance": [
+        "Aetna",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1058",
+      "name": "Aisha Park, RDN",
+      "credentials": "RDN",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "OR"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 232,
+      "insurance": [
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1059",
+      "name": "Carmen Tanaka, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_atx",
+      "virtual_available": true,
+      "licensed_states": [
+        "TX",
+        "FL",
+        "AZ"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 382,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1060",
+      "name": "Dr. Daniela Vasquez",
+      "credentials": "MD, ABPN",
+      "specialty": "Psychiatry (Perinatal)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "CT",
+        "NV",
+        "NY"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 12-17",
+          "Tue 12-17",
+          "Fri 12-17"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 376,
+      "insurance": [
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1061",
+      "name": "Dr. Sofia Webb",
+      "credentials": "PT, DPT",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "FL",
+        "WA",
+        "GA"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 197,
+      "insurance": [
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1062",
+      "name": "Dr. Tara Webb",
+      "credentials": "DO",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "OR",
+        "CT",
+        "CO"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 431,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1063",
+      "name": "Dr. Naomi Chen",
+      "credentials": "MD, MPH",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "AZ",
+        "IL"
+      ],
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Phoenix",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 67,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1064",
+      "name": "Sofia Brooks, MS",
+      "credentials": "MS, CHC",
+      "specialty": "Perinatal Health Coach",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_nyc",
+      "virtual_available": true,
+      "licensed_states": "all",
+      "languages": [
+        "English",
+        "Mandarin"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.3,
+      "total_reviews": 260,
+      "insurance": [
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true,
+      "state_license_required": false
+    },
+    {
+      "id": "prov_1065",
+      "name": "Dr. Leah Johnson",
+      "credentials": "MD",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NM",
+        "NV",
+        "GA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 401,
+      "insurance": [
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1066",
+      "name": "Dr. Ingrid Hill",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "OR",
+        "TX",
+        "NV",
+        "NM"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 12-20",
+          "Tue 12-20",
+          "Wed 12-20",
+          "Fri 12-20"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 400,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1067",
+      "name": "Simone Torres, LCSW",
+      "credentials": "LCSW, PMH-C",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "FL",
+        "TX",
+        "GA",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 12-20",
+          "Tue 12-20",
+          "Wed 12-20",
+          "Thu 12-20",
+          "Fri 12-20"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 88,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "ACT",
+        "DBT",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1068",
+      "name": "Dr. Simone Chen",
+      "credentials": "PsyD",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "GA",
+        "CA",
+        "AZ",
+        "NM"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 476,
+      "insurance": [
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "IFS",
+        "psychodynamic"
+      ]
+    },
+    {
+      "id": "prov_1069",
+      "name": "Naomi Park, RD",
+      "credentials": "RD, CLEC",
+      "specialty": "Prenatal & Postpartum Nutrition (Dietitian)",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "WA",
+        "NJ",
+        "GA",
+        "AZ",
+        "NV"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.8,
+      "total_reviews": 415,
+      "insurance": [
+        "Aetna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1070",
+      "name": "Dr. Omar Torres",
+      "credentials": "PT, DPT, WCS",
+      "specialty": "Pelvic Floor Physical Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "male",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "NJ",
+        "WA",
+        "NM"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/New_York",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 306,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1071",
+      "name": "Rebecca Torres, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": "hub_la",
+      "virtual_available": true,
+      "licensed_states": [
+        "CA",
+        "GA",
+        "NV",
+        "WA",
+        "IL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17"
+        ]
+      },
+      "avg_rating": 4.5,
+      "total_reviews": 245,
+      "insurance": [
+        "Cigna",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1072",
+      "name": "Camila Sharma, RN",
+      "credentials": "RN, IBCLC",
+      "specialty": "Lactation & Infant Feeding",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "NM"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 12-17",
+          "Tue 12-17",
+          "Wed 12-17",
+          "Thu 12-17",
+          "Fri 12-17"
+        ]
+      },
+      "avg_rating": 4.6,
+      "total_reviews": 569,
+      "insurance": [
+        "Cigna",
+        "Humana",
+        "Self-pay"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1073",
+      "name": "Dr. Denise Johnson",
+      "credentials": "DO",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "CO",
+        "NY",
+        "IL"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Denver",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Fri 8-20"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 350,
+      "insurance": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana"
+      ],
+      "accepting_new_patients": false
+    },
+    {
+      "id": "prov_1074",
+      "name": "Dr. Ruth Vasquez",
+      "credentials": "MD, MPH",
+      "specialty": "Obstetrics & Prenatal Care",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 8-17",
+          "Tue 8-17",
+          "Wed 8-17",
+          "Thu 8-17",
+          "Fri 8-17"
+        ]
+      },
+      "avg_rating": 4.9,
+      "total_reviews": 598,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Self-pay",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1075",
+      "name": "Yuki Hill, CNM",
+      "credentials": "CNM, MSN",
+      "specialty": "Certified Nurse-Midwife",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "OR",
+        "NM",
+        "MA"
+      ],
+      "languages": [
+        "English"
+      ],
+      "availability_dayparts": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Los_Angeles",
+        "weekly_slots": [
+          "Mon 8-20",
+          "Tue 8-20",
+          "Wed 8-20",
+          "Thu 8-20"
+        ]
+      },
+      "avg_rating": 4.7,
+      "total_reviews": 148,
+      "insurance": [
+        "Aetna",
+        "Cigna",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true
+    },
+    {
+      "id": "prov_1076",
+      "name": "Leah Morrison, LMFT",
+      "credentials": "LMFT",
+      "specialty": "Perinatal Mental Health & Therapy",
+      "product_areas": [
+        "Pregnancy & Prenatal Care",
+        "Postpartum & Fourth Trimester"
+      ],
+      "gender": "female",
+      "hub": null,
+      "virtual_available": true,
+      "licensed_states": [
+        "IL",
+        "NY",
+        "WA"
+      ],
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "availability_dayparts": [
+        "afternoon",
+        "evening"
+      ],
+      "availability": {
+        "timezone": "America/Chicago",
+        "weekly_slots": [
+          "Mon 12-20",
+          "Tue 12-20",
+          "Wed 12-20",
+          "Thu 12-20"
+        ]
+      },
+      "avg_rating": 4.4,
+      "total_reviews": 442,
+      "insurance": [
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana",
+        "UnitedHealth"
+      ],
+      "accepting_new_patients": true,
+      "modalities": [
+        "DBT",
+        "IFS"
+      ]
     }
   ]
 }
