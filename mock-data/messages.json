@@ -1,0 +1,155 @@
+{
+  "_description": "Synthetic inbound patient messages for the triage agent (portfolio demo). All fictional. The `expected` block is ground truth for the deterministic guards (escalation + refill routing), used by the keyless eval. The LLM classifier's acuity/category is probabilistic and not exact-match tested.",
+
+  "messages": [
+    {
+      "id": "msg_001",
+      "patient_id": "pat_003",
+      "received_at": "2026-05-18T07:42:00Z",
+      "channel": "patient_portal",
+      "subject": "Quick question about my appointment",
+      "body": "Hi, I wanted to reschedule my therapy session next week, and also I've been having some thoughts of harming myself when the baby cries at night. Let me know what times are open.",
+      "expected": {"escalation": true, "refill": null, "note": "Self-harm ideation buried in a routine reschedule. Must float to top."}
+    },
+    {
+      "id": "msg_002",
+      "patient_id": "pat_002",
+      "received_at": "2026-05-18T08:05:00Z",
+      "channel": "patient_portal",
+      "subject": "Not feeling movement",
+      "body": "I'm 26 weeks and I haven't felt the baby move since yesterday afternoon. Should I be worried?",
+      "expected": {"escalation": true, "refill": null, "note": "Decreased fetal movement is a red flag."}
+    },
+    {
+      "id": "msg_003",
+      "patient_id": "pat_1003",
+      "received_at": "2026-05-18T08:20:00Z",
+      "channel": "sms",
+      "subject": null,
+      "body": "Severe headache for two days and now I'm seeing spots and flashing lights. 33 weeks.",
+      "expected": {"escalation": true, "refill": null, "note": "Headache + visual changes in third trimester: preeclampsia red flag."}
+    },
+    {
+      "id": "msg_004",
+      "patient_id": "pat_004",
+      "received_at": "2026-05-18T09:10:00Z",
+      "channel": "patient_portal",
+      "subject": "Heavy bleeding",
+      "body": "I'm 3 weeks postpartum and soaking through a pad every hour for the last 3 hours. Is this normal?",
+      "expected": {"escalation": true, "refill": null, "note": "Postpartum hemorrhage red flag."}
+    },
+    {
+      "id": "msg_005",
+      "patient_id": "pat_003",
+      "received_at": "2026-05-18T09:30:00Z",
+      "channel": "patient_portal",
+      "subject": "Refill",
+      "body": "Can I get a refill on my prenatal vitamins? Still taking the same ones, nothing has changed.",
+      "expected": {"escalation": false, "refill": {"rn_eligible": true, "block_reason": null}, "note": "Straight protocol refill, on the RN list, recent visit on file."}
+    },
+    {
+      "id": "msg_006",
+      "patient_id": "pat_003",
+      "received_at": "2026-05-18T09:45:00Z",
+      "channel": "patient_portal",
+      "subject": "Sertraline",
+      "body": "The 50mg of sertraline isn't really helping the mood. Could we increase it to 100mg?",
+      "expected": {"escalation": false, "refill": {"rn_eligible": false, "block_reason": "dose_change"}, "note": "Dose change requires prescriber judgment."}
+    },
+    {
+      "id": "msg_007",
+      "patient_id": "pat_002",
+      "received_at": "2026-05-18T10:00:00Z",
+      "channel": "patient_portal",
+      "subject": "New medication",
+      "body": "My friend recommended a magnesium supplement for leg cramps. Can you start me on a new prescription for it?",
+      "expected": {"escalation": false, "refill": {"rn_eligible": false, "block_reason": "new_medication"}, "note": "First fill / new medication requires prescriber review."}
+    },
+    {
+      "id": "msg_008",
+      "patient_id": "pat_004",
+      "received_at": "2026-05-18T10:20:00Z",
+      "channel": "patient_portal",
+      "subject": "Refill request",
+      "body": "I need a refill of my labetalol for blood pressure. Same dose as before.",
+      "expected": {"escalation": false, "refill": {"rn_eligible": false, "block_reason": "off_protocol_med"}, "note": "Antihypertensive is not on the RN standing-order list."}
+    },
+    {
+      "id": "msg_009",
+      "patient_id": "pat_1009",
+      "received_at": "2026-05-18T10:35:00Z",
+      "channel": "patient_portal",
+      "subject": "Vitamin refill",
+      "body": "Could I refill my prenatal vitamins please? Same as always.",
+      "expected": {"escalation": false, "refill": {"rn_eligible": false, "block_reason": "no_qualifying_visit"}, "note": "On-protocol med, but no visit on file: needs a prescriber touch first."}
+    },
+    {
+      "id": "msg_010",
+      "patient_id": "pat_002",
+      "received_at": "2026-05-18T11:00:00Z",
+      "channel": "patient_portal",
+      "subject": "Reschedule",
+      "body": "Can I move my 20-week anatomy scan to the following week? Something came up at work.",
+      "expected": {"escalation": false, "refill": null, "note": "Routine scheduling."}
+    },
+    {
+      "id": "msg_011",
+      "patient_id": "pat_003",
+      "received_at": "2026-05-18T11:15:00Z",
+      "channel": "patient_portal",
+      "subject": "Billing",
+      "body": "I got a bill for my last session but I thought it was covered by insurance. Can someone explain the charges?",
+      "expected": {"escalation": false, "refill": null, "note": "Administrative / billing."}
+    },
+    {
+      "id": "msg_012",
+      "patient_id": "pat_004",
+      "received_at": "2026-05-18T11:30:00Z",
+      "channel": "patient_portal",
+      "subject": "Latch question",
+      "body": "Breastfeeding is going okay but my nipples are a little sore. Any tips before my next lactation visit?",
+      "expected": {"escalation": false, "refill": null, "note": "Routine clinical question, non-urgent."}
+    },
+    {
+      "id": "msg_013",
+      "patient_id": "pat_1013",
+      "received_at": "2026-05-18T12:00:00Z",
+      "channel": "sms",
+      "subject": null,
+      "body": "Mild congestion and a runny nose for a couple days, no fever. Anything safe to take while pregnant?",
+      "expected": {"escalation": false, "refill": null, "note": "Routine clinical question, self-limited."}
+    },
+    {
+      "id": "msg_014",
+      "patient_id": "pat_002",
+      "received_at": "2026-05-18T12:20:00Z",
+      "channel": "patient_portal",
+      "subject": "Portal access",
+      "body": "I can't log in to see my lab results. Can someone reset my portal access?",
+      "expected": {"escalation": false, "refill": null, "note": "Administrative / tech support."}
+    },
+    {
+      "id": "msg_015",
+      "patient_id": "pat_003",
+      "received_at": "2026-05-18T12:40:00Z",
+      "channel": "patient_portal",
+      "subject": "Trouble breathing",
+      "body": "Since this morning I've had chest tightness and trouble breathing when I walk up the stairs. 8 weeks postpartum.",
+      "expected": {"escalation": true, "refill": null, "note": "Postpartum chest pain / dyspnea: possible PE, red flag."}
+    },
+    {
+      "id": "msg_016",
+      "patient_id": "pat_004",
+      "received_at": "2026-05-18T13:00:00Z",
+      "channel": "patient_portal",
+      "subject": "Refill + thanks",
+      "body": "Thanks for the great visit last week! Quick one: can I refill my prenatal vitamins? Same dose, nothing's changed.",
+      "expected": {"escalation": false, "refill": {"rn_eligible": true, "block_reason": null}, "note": "On-protocol refill, recent visit on file."}
+    }
+  ],
+
+  "rn_refillable_protocol": {
+    "_note": "Meds the clinic's standing orders allow an RN to refill without prescriber review, when no dose change, not a first fill, and a qualifying recent visit exists. Synthetic, not clinical guidance.",
+    "medications": ["prenatal vitamin", "prenatal vitamins", "iron supplement", "ferrous sulfate", "vitamin d", "folic acid"]
+  }
+}
