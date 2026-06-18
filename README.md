@@ -195,8 +195,8 @@ All data is synthetic. Located in `mock-data/`:
 | | |
 |--|--|
 | **Orchestration** | LangGraph: StateGraph, conditional routing, persistent TC state |
-| **Models** | `claude-sonnet-4-6` (planner / drafter). Validator is deterministic code, no model. |
-| **Structured outputs** | Pydantic: `CarePlanRecommendation`, `RecommendedProvider`, `ValidationResult` |
+| **Models** | `claude-sonnet-4-6` (planner, drafter, provider matcher, triage classifier). Where facts suffice there is no model: the validator and both triage guards are deterministic code. |
+| **Structured outputs** | Pydantic typed outputs across agents (`CarePlanRecommendation`, the matcher `Ranking`, the triage `InboxClass`, `ValidationResult`) |
 | **LLM client** | langchain-anthropic: `.with_structured_output()` for typed model responses |
 | **Runtime** | Python 3.11+ |
 
@@ -223,8 +223,10 @@ variables, so you can run the demo on whatever you have access to:
 |----------|---------|------|
 | `PLANNER_MODEL` | `claude-sonnet-4-6` | Care Team Planner |
 | `DRAFTER_MODEL` | `claude-sonnet-4-6` | Patient Intro Drafter |
+| `MATCHER_MODEL` | `claude-sonnet-4-6` | Provider Matcher (weighted ranking) |
+| `CLASSIFIER_MODEL` | `claude-sonnet-4-6` | Message Triage Classifier |
 
-Set them in `.env` or your shell to override.
+Set them in `.env` or your shell to override. The refill router's autonomy ceiling is a separate config knob, `REFILL_AUTONOMY` (default `L1`: auto-route a clean protocol refill to the RN queue; a human always authorizes).
 
 ---
 
@@ -245,6 +247,7 @@ Set them in `.env` or your shell to override.
 │   ├── providers.json               # 80 providers with licensed_states, gender, dayparts
 │   ├── patients.json                # 300 patients with care_stage + preference_profile
 │   ├── care-pathways.json           # Standard maternity pathway + variant schemas
+│   ├── messages.json                # Inbound messages for triage + RN protocol list
 │   ├── schedules.json
 │   └── clinic.json
 └── ARCHITECTURE.html                # Rendered architecture diagrams (open in browser)

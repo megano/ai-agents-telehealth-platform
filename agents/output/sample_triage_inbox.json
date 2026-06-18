@@ -1,0 +1,238 @@
+{
+  "inbox_size": 16,
+  "md_worklist": [
+    {
+      "message_id": "msg_001",
+      "patient_id": "pat_003",
+      "acuity": "urgent",
+      "category": "urgent_symptom",
+      "subject": "Quick question about my appointment",
+      "rationale": "Active self-harm ideation in postpartum period requires immediate safety assessment",
+      "flag": "clinical review required",
+      "escalation_reason": "self_harm"
+    },
+    {
+      "message_id": "msg_002",
+      "patient_id": "pat_002",
+      "acuity": "urgent",
+      "category": "urgent_symptom",
+      "subject": "Not feeling movement",
+      "rationale": "Absent fetal movement since yesterday at 26 weeks is a potential fetal emergency",
+      "flag": "clinical review required",
+      "escalation_reason": "decreased_fetal_movement"
+    },
+    {
+      "message_id": "msg_003",
+      "patient_id": "pat_1003",
+      "acuity": "urgent",
+      "category": "urgent_symptom",
+      "subject": null,
+      "rationale": "Severe headache with visual disturbances at 33 weeks are classic signs of preeclampsia",
+      "flag": "clinical review required",
+      "escalation_reason": "preeclampsia_signs"
+    },
+    {
+      "message_id": "msg_004",
+      "patient_id": "pat_004",
+      "acuity": "urgent",
+      "category": "urgent_symptom",
+      "subject": "Heavy bleeding",
+      "rationale": "Soaking a pad hourly for 3 hours postpartum indicates possible hemorrhage",
+      "flag": "clinical review required",
+      "escalation_reason": "hemorrhage"
+    },
+    {
+      "message_id": "msg_015",
+      "patient_id": "pat_003",
+      "acuity": "urgent",
+      "category": "urgent_symptom",
+      "subject": "Trouble breathing",
+      "rationale": "New chest tightness and dyspnea on exertion at 8 weeks postpartum raises concern for PE or cardiac event",
+      "flag": "clinical review required",
+      "escalation_reason": "cardiopulmonary"
+    },
+    {
+      "message_id": "msg_006",
+      "patient_id": "pat_003",
+      "acuity": "same-day",
+      "category": "clinical_question",
+      "subject": "Sertraline",
+      "rationale": "Sertraline dose adjustment request in perinatal patient warrants timely clinical review",
+      "refill": {
+        "message_id": "msg_006",
+        "rn_eligible": false,
+        "block_reason": "dose_change",
+        "route": "md_queue",
+        "auto_approve_eligible": false,
+        "autonomy_level": "L1",
+        "reason_text": "Dose change requested; requires prescriber judgment."
+      }
+    },
+    {
+      "message_id": "msg_008",
+      "patient_id": "pat_004",
+      "acuity": "same-day",
+      "category": "refill",
+      "subject": "Refill request",
+      "rationale": "Antihypertensive refill in a perinatal patient should not be delayed to avoid lapse in BP control",
+      "refill": {
+        "message_id": "msg_008",
+        "rn_eligible": false,
+        "block_reason": "off_protocol_med",
+        "route": "md_queue",
+        "auto_approve_eligible": false,
+        "autonomy_level": "L1",
+        "reason_text": "Medication is not on the RN standing-order protocol list."
+      }
+    },
+    {
+      "message_id": "msg_007",
+      "patient_id": "pat_002",
+      "acuity": "routine",
+      "category": "clinical_question",
+      "subject": "New medication",
+      "rationale": "New supplement request for leg cramps is non-urgent and can be reviewed routinely",
+      "refill": {
+        "message_id": "msg_007",
+        "rn_eligible": false,
+        "block_reason": "new_medication",
+        "route": "md_queue",
+        "auto_approve_eligible": false,
+        "autonomy_level": "L1",
+        "reason_text": "New medication / first fill; requires prescriber review."
+      }
+    },
+    {
+      "message_id": "msg_009",
+      "patient_id": "pat_1009",
+      "acuity": "routine",
+      "category": "refill",
+      "subject": "Vitamin refill",
+      "rationale": "Routine prenatal vitamin refill with no changes reported",
+      "refill": {
+        "message_id": "msg_009",
+        "rn_eligible": false,
+        "block_reason": "no_qualifying_visit",
+        "route": "md_queue",
+        "auto_approve_eligible": false,
+        "autonomy_level": "L1",
+        "reason_text": "No qualifying recent visit on file; needs a prescriber touch first."
+      }
+    },
+    {
+      "message_id": "msg_012",
+      "patient_id": "pat_004",
+      "acuity": "routine",
+      "category": "clinical_question",
+      "subject": "Latch question",
+      "rationale": "Mild nipple soreness with lactation visit already scheduled is a routine question"
+    },
+    {
+      "message_id": "msg_013",
+      "patient_id": "pat_1013",
+      "acuity": "routine",
+      "category": "clinical_question",
+      "subject": null,
+      "rationale": "Mild cold symptoms without fever; safe OTC medication guidance is a routine inquiry"
+    }
+  ],
+  "rn_queue": [
+    {
+      "message_id": "msg_005",
+      "patient_id": "pat_003",
+      "acuity": "routine",
+      "category": "refill",
+      "subject": "Refill",
+      "rationale": "Routine prenatal vitamin refill with no changes reported",
+      "refill": {
+        "message_id": "msg_005",
+        "rn_eligible": true,
+        "block_reason": null,
+        "route": "rn_queue",
+        "auto_approve_eligible": false,
+        "autonomy_level": "L1",
+        "reason_text": "Straight protocol refill; eligible for RN standing-order handling."
+      }
+    },
+    {
+      "message_id": "msg_016",
+      "patient_id": "pat_004",
+      "acuity": "routine",
+      "category": "refill",
+      "subject": "Refill + thanks",
+      "rationale": "Routine prenatal vitamin refill with no changes reported",
+      "refill": {
+        "message_id": "msg_016",
+        "rn_eligible": true,
+        "block_reason": null,
+        "route": "rn_queue",
+        "auto_approve_eligible": false,
+        "autonomy_level": "L1",
+        "reason_text": "Straight protocol refill; eligible for RN standing-order handling."
+      }
+    }
+  ],
+  "admin_queue": [
+    {
+      "message_id": "msg_010",
+      "patient_id": "pat_002",
+      "acuity": "routine",
+      "category": "scheduling",
+      "subject": "Reschedule",
+      "rationale": "Elective rescheduling of anatomy scan with no clinical urgency indicated"
+    },
+    {
+      "message_id": "msg_011",
+      "patient_id": "pat_003",
+      "acuity": "routine",
+      "category": "billing_admin",
+      "subject": "Billing",
+      "rationale": "Insurance billing dispute is an administrative matter with no clinical urgency"
+    },
+    {
+      "message_id": "msg_014",
+      "patient_id": "pat_002",
+      "acuity": "routine",
+      "category": "billing_admin",
+      "subject": "Portal access",
+      "rationale": "Portal login/access reset is an administrative IT issue with no clinical urgency"
+    }
+  ],
+  "staff_queue": [
+    {
+      "status": "escalated",
+      "message_id": "msg_001",
+      "patient_id": "pat_003",
+      "reason": "self_harm",
+      "action_required": "clinical review required"
+    },
+    {
+      "status": "escalated",
+      "message_id": "msg_002",
+      "patient_id": "pat_002",
+      "reason": "decreased_fetal_movement",
+      "action_required": "clinical review required"
+    },
+    {
+      "status": "escalated",
+      "message_id": "msg_003",
+      "patient_id": "pat_1003",
+      "reason": "preeclampsia_signs",
+      "action_required": "clinical review required"
+    },
+    {
+      "status": "escalated",
+      "message_id": "msg_004",
+      "patient_id": "pat_004",
+      "reason": "hemorrhage",
+      "action_required": "clinical review required"
+    },
+    {
+      "status": "escalated",
+      "message_id": "msg_015",
+      "patient_id": "pat_003",
+      "reason": "cardiopulmonary",
+      "action_required": "clinical review required"
+    }
+  ]
+}
