@@ -151,6 +151,7 @@
   <a href="#overview">Overview</a>
   <a href="#care-coordination">Care Coordination Agent</a>
   <a href="#care-matching">Care Matching Agent</a>
+  <a href="#triage">Triage Agent</a>
   <a href="#data-boundaries">Data Boundaries</a>
   <a href="#planned">Planned Agents</a>
   <a href="#validator">Validator Pattern</a>
@@ -167,6 +168,7 @@ flowchart LR
   subgraph agents["Agent Layer"]
     B["🏥 Care Coordination Agent\nTC orchestrates · Planner selects team\nValidator guards · Intro drafter writes"]
     M["🧭 Care Matching Agent\nDeterministic eligibility + relaxation\nSonnet weighted ranking"]
+    T["📥 Triage Agent\nShared classifier · escalation guard\nIsolated refill router"]
     C["[Planned]\nInsurance · Follow-up\nSMS · Pathway Variants"]
   end
   subgraph data["Data Layer  (mock-data/)"]
@@ -174,9 +176,11 @@ flowchart LR
     E[(patients.json\ncare_stage · preference_profile)]
     F[(care-pathways.json\nstandard + variant schemas)]
     G[(schedules.json\ncomms-queue.json)]
+    H[(messages.json\ninbound + RN protocol)]
   end
   B --> D & E & F
   M --> D & E
+  T --> H & E
   style C fill:#FFF8E7,stroke:#F0C040,color:#8a6000
     </div>
   </div>
@@ -333,6 +337,65 @@ flowchart TD
     (<code>test_matching.py</code>). The single LLM call is the weighted ranking, the one genuinely
     probabilistic step. The <code>preference_profile</code> is stored, refined state; an LLM refinement step
     (a new signal re-weighting the profile) is the documented next beat, not run in v1.
+  </div>
+</section>
+
+<!-- TRIAGE AGENT -->
+<section id="triage">
+  <h2>The Patient-Message Triage Agent <code style="font-size:13px;color:var(--mid)">triage_agent.py</code></h2>
+  <p>
+    One triage pass over the inbound inbox, two risk-stratified outputs. Perception is shared,
+    each message is classified once, but the two decision/action handlers are separate so the
+    higher-risk refill logic is bounded and can be toggled off without touching the prioritizer.
+  </p>
+
+  <div class="diagram-card">
+    <div class="mermaid">
+flowchart TD
+  IN["📥 Inbound inbox\n16 synthetic messages"]
+  CL["🧠 Shared Classifier\nSonnet 4.6\nacuity + category · one pass"]
+  EG["🛡 Escalation Guard\ndeterministic · on raw text\nForces top priority, never downgrades"]
+  RG["💊 Refill Guard\ndeterministic · isolated module\nStanding-order eligibility"]
+  MD["📋 MD Worklist\nacuity-sorted"]
+  RN["🩺 RN Queue\nprotocol refills"]
+  SQ["⛔ Staff Queue\nclinical review required"]
+
+  IN --> CL --> EG
+  EG -->|"red flag"| SQ
+  EG -->|"refill category"| RG
+  EG -->|"clinical / other"| MD
+  RG -->|"clean protocol refill"| RN
+  RG -->|"dose change · new med · off-protocol · no visit"| MD
+
+  style IN fill:#EAF0F8,stroke:#1A5F7A
+  style CL fill:#E8F4F2,stroke:#2E9E8F
+  style EG fill:#F4F6F8,stroke:#9EA8B3,stroke-dasharray:5
+  style RG fill:#F4F6F8,stroke:#9EA8B3,stroke-dasharray:5
+  style SQ fill:#FDE8E8,stroke:#C0392B
+    </div>
+  </div>
+
+  <h3>Two Deterministic Guards</h3>
+  <table>
+    <tr><th>Guard</th><th>Rule it enforces</th><th>Why code, not model</th></tr>
+    <tr>
+      <td>Escalation guard</td>
+      <td>Red-flag patterns (self-harm, hemorrhage, decreased fetal movement, preeclampsia signs, cardiopulmonary) force top priority and "clinical review required".</td>
+      <td>Runs on raw text after the model and can only escalate. Speed never costs an escalation; the model cannot downgrade a flagged message.</td>
+    </tr>
+    <tr>
+      <td>Refill guard</td>
+      <td>A dose change, new medication, off-protocol drug, or no qualifying visit keeps the message with the prescriber. Only a clean protocol refill routes to the RN queue.</td>
+      <td>Isolated module with its own audit and a default-off autonomy ceiling. Routing is placement only; it never fills or authorizes.</td>
+    </tr>
+  </table>
+
+  <div class="principle-box" style="margin-top:20px">
+    <strong>Buried-emergency safety:</strong> a self-harm disclosure inside a routine reschedule still
+    floats to the top, because the guard scans the whole raw message and takes the max urgency. Both
+    guards are deterministic and tested without an API key (<code>test_triage.py</code>); the only model
+    call is the shared classifier. Escalations and RN-routed items use the same staff-queue artifact the
+    care-coordination agent emits, so the agents compose into one system.
   </div>
 </section>
 
